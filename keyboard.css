@@ -1,0 +1,20 @@
+#keyboard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.keyboardKey{
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+
+}
+
+.row{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
