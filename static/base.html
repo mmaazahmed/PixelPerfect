@@ -19,6 +19,9 @@
 
     <!-- Access to Google Fonts - used for the title -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+    <!-- Function to display rules when clicking the settings button -->
+    <script src = 'base.js'></script>
     
     <title>Pixture Perfect</title>
 
@@ -36,18 +39,42 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Menu1</a></li>
-              <li><a href="#">Menu2</a></li>
-              <li><a href="#">Menu3</a></li>
-              <li><a href="#">Menu4</a></li>
+              <li><a href="#">Landmarks</a></li>
+              <li><a href="#">Album Covers</a></li>
+              <li><a href="#">Posters</a></li>
+              <li><a href="#">Paintings</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+              <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
+              <li onclick = 'onRules()'><a><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
             </ul>
           </div>
         </div>
       </nav> 
+    
+    <!-- Information Div - Where the rules of the game will be explained. -->
+    <div id = 'overlay', onclick = 'offRules()'>
+      <div id = 'rule-text'>
+        <h1 style = 'margin: auto;'>Rules</h1>
+        <br>
+        <p>You have 5 attempts to guess the content of the photo.</p>
+        <p>For every wrong guess you make, the photo will become less blurry!</p>
+        <p>This game was made for CITS3401 project 1.</p>
+        <p>Click anywhere to return to the main page.</p>
+      </div>
+    </div>
+
+    <!-- Share div - Where we will be able to provide sharable content -->
+    <div id = 'share', onclick = 'offShare()'>
+      <div id = 'share-text'>
+        <h1 style = 'margin: auto;'>Share</h1>
+        <br>
+        <p>Thank you for playing our game!</p>
+        <p>This text is clearly subject to change</p>
+        <p>So I can really say whatever I want</p>
+        <p>lol</p>
+      </div>
+    </div>
 
     <!-- Title div -->
     <div class = 'container-fluid'>
@@ -82,14 +109,15 @@
         <div class = 'container col-sm-4' style = 'background-color: rgb(40, 6, 50);'>
             <!-- Div where guesses will be stored -->
             <div id = 'guesses'>
-                <!-- List of guesses -->
-                <ul class = guess_list>
-                    <li class = 'guess1'>Guess 1</li>
-                    <li class = 'guess2'>Guess 2</li>
-                    <li class = 'guess3'>Guess 3</li>
-                    <li class = 'guess4'>Guess 4</li>
-                    <li class = 'guess5'>Guess 5</li>
-                </ul>
+                <!-- sidebar goes here: -->
+                <button class="collapsible">Guesses:</button>
+                <div class="content">
+                  <p class = 'guess'>GUESS 1:</p>
+                  <p class = 'guess'>GUESS 2:</p>
+                  <p class = 'guess'>GUESS 3:</p>
+                  <p class = 'guess'>GUESS 4:</p>
+                  <p class = 'guess'>GUESS 5:</p>
+                </div>
             </div>
         </div>
     

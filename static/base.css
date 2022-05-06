@@ -1,0 +1,130 @@
+.title {
+    text-align: center;
+    color:white;
+    font-family: "Audiowide", sans-serif;
+}
+
+.menulink {
+    color: white;
+    margin:auto;
+}
+
+.col-sm-12 {
+    margin: auto
+}
+
+#background {
+    background-color: rgb(40, 6, 50)
+}
+
+.test-image {
+    text-align: center;
+}
+
+.info {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    /* Just to get some separation between the keyboard and the guess counter */
+}
+
+ul li {
+    color: white;
+    margin-bottom: 30px;
+}
+         
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  }
+
+#share {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  }
+
+#rule-text{
+    background-color: rgb(40, 6, 50);
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+#share-text{
+    background-color: rgb(40, 6, 50);
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.collapsible {
+    background-color: rgb(59, 9, 75);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: rgb(73, 12, 94);
+  }
+  
+  .collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+
+  .guess {
+      padding: 10px 5px;
+      margin: auto;
+      text-align: left;
+  }
+         
+
+
+
