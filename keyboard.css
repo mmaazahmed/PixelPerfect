@@ -1,20 +1,46 @@
 #keyboard {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+  width: 500px;
+  height:200px;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
 }
 
 
 .keyboardKey{
-  text-align: center;
-  margin: auto;
-  padding: 10px;
-
+  font-weight: bold;
+  margin: 0 3px 0 3px;
+  width: 43px;
+  height: 58px;
+  cursor: pointer;
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border-radius: 4px;
 }
 
+.longerKeyboardKey{
+  font-weight: bold;
+  margin: 0 3px 0 3px;
+  width: 90px;
+  height: 58px;
+  cursor: pointer;
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+
+
 .row{
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+  display: inline-flex;
+  height: 58px;
+  width: 500px;
+  padding: 3px;
 }
