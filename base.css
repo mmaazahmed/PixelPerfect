@@ -226,58 +226,15 @@ ul li {
 
 }
 
-/* Adding a fade out effect for the rules and share button mainly. */
-
-.fade-out {
-  animation: fadeOut ease 0.1s;
-  -webkit-animation: fadeOut ease 0.1s;
-  -moz-animation: fadeOut ease 0.1s;
-  -o-animation: fadeOut ease 0.1s;
-  -ms-animation: fadeOut ease 0.1s;
+#guesses {
+  display: block;
+  text-align: center;
+  margin: 20px
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
+#submit-guesses {
+  display: inline-block;
+  margin: auto;
+  text-align: left;
 }
 
-@-moz-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-o-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
-@-ms-keyframes fadeOut {
-  0% {
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-}
-
-}

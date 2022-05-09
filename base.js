@@ -28,6 +28,20 @@ $(window).on('load', () => {
         $('#overlay').fadeOut(100)
       })
 
+      guess = document.getElementById('guesstxt');
+      
+      var count = 0
+
+      guess.addEventListener("keypress", function(e){
+        if (e.key === 'Enter') {
+          count += 1;
+          guesstxt = $(guess).val();
+          $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
+          $(guess).val('')
+        }
+        
+      })
+
 });
 
 // Overlay for the rules - turns the rules on and off
