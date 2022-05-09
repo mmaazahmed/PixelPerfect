@@ -1,3 +1,5 @@
+// Creating the collapsible sidebar for guesses
+
 $(window).on('load', () => { 
     var coll = document.getElementsByClassName("collapsible");
       console.log(coll)
@@ -5,7 +7,6 @@ $(window).on('load', () => {
       
       for (i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function() {
-          console.log('is this even working')
           this.classList.toggle("active");
           var content = this.nextElementSibling;
           if (content.style.maxHeight){
@@ -15,20 +16,40 @@ $(window).on('load', () => {
           } 
         });
       }
+
+      const ruleoverlay = document.getElementById('overlay')
+      const share = document.getElementById('share')
+
+      $(share).click(function(){
+        $('#share').fadeOut(100)
+      })
+
+      $(overlay).click(function(){
+        $('#overlay').fadeOut(100)
+      })
+
 });
 
+// Overlay for the rules - turns the rules on and off
+
 function onRules() {
+    document.getElementById("overlay").className = 'fade-in';
     document.getElementById("overlay").style.display = "block";
   }
   
 function offRules() {
-    document.getElementById("overlay").style.display = "none";
+    document.getElementById("overlay").className = 'fade-out';
+    // document.getElementById("overlay").style.display = "none";
   }
 
+// Same principle here - for the share page
+
 function onShare() {
+    document.getElementById("share").className = 'fade-in';
     document.getElementById("share").style.display = "block";
   }
 
 function offShare() {
-    document.getElementById("share").style.display = "none";
+    document.getElementById("share").className = 'fade-out';
+    // document.getElementById("share").style.display = "none";
   }
