@@ -95,8 +95,8 @@
             </div>
 
             <!-- Div for guesses??? open to this changing -->
-            <div id = 'keyboard-div'>
-                <p class = 'info'>Guess x of y:</p>
+            <div id = 'guesses'>
+              <input id = 'guesstxt' type="text" name = 'hello!' action = 'processGuess()' onsubmit="processGuess()">
             </div>
 
             <!-- Div for keyboard -->
@@ -108,15 +108,11 @@
         <!-- Third div empty (for now, will add sidebar later) -->
         <div class = 'container col-sm-4' style = 'background-color: rgb(40, 6, 50);'>
             <!-- Div where guesses will be stored -->
-            <div id = 'guesses'>
+            <div id = 'guess-sidebar'>
                 <!-- sidebar goes here: -->
                 <button class="collapsible">Guesses:</button>
-                <div class="content">
-                  <p class = 'guess'>GUESS 1:</p>
-                  <p class = 'guess'>GUESS 2:</p>
-                  <p class = 'guess'>GUESS 3:</p>
-                  <p class = 'guess'>GUESS 4:</p>
-                  <p class = 'guess'>GUESS 5:</p>
+                <div id="guess-content" class = 'content'>
+                  
                 </div>
             </div>
         </div>
