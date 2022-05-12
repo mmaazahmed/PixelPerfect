@@ -14,20 +14,21 @@ a refresher on setting up flask on your pc:
 
 basic app file structure:
 .
-├── __init__.py
-├── __pycache__
-│   ├── __init__.cpython-37.pyc
-│   └── routes.cpython-37.pyc
-├── pixelate.py
-├── routes.py
-├── static
-│   ├── images
-│   │   ├── bmo.png
-│   │   └── c.png
-│   ├── js
-│   │   ├── base.js
-│   │   └── keyboard.js
-│   └── styles
-│       └── base.css
-└── templates
-    └── base.html
+├── __init__.py  
+├── __pycache__  
+│   ├── __init__.cpython-37.pyc  
+│   └── routes.cpython-37.pyc  
+├── pixelate.py  
+├── routes.py  
+├── static  
+│   ├── images  
+│   │   ├── bmo.png  
+│   │   └── c.png  
+│   ├── js  
+│   │   ├── base.js  
+│   │   └── keyboard.js  
+│   └── styles  
+│       └── base.css  
+└── templates  
+    └── base.html  
+  
