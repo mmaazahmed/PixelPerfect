@@ -6,7 +6,7 @@ a refresher on setting up flask on your pc:
                   python3.7 -m venv [your venv name]  
 -> run your venv with   
         source  [your venv name]/bin/activate  
--> set up flask and dotenec:   
+-> set up flask and dotenv:   
             pip install flask  
             pip install python-dotenv  
  -> run the app with:  
