@@ -1,5 +1,5 @@
 # Pixel-Perfect
-cits3403 project
+cits3403 project  
 a refresher on setting up flask on your pc:  
 ->extract the files to a folder  
 ->set up a virtual environment on the root of the project folder through:  
