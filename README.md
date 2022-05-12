@@ -12,8 +12,8 @@ a refresher on setting up flask on your pc:
  -> run the app with:  
     ⇥ flask run  
 
-basic app file structure:
-.
+basic app file structure:  
+.  
 ├── __init__.py  
 ├── __pycache__  
 │   ├── __init__.cpython-37.pyc  
