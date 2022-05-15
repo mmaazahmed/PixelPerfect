@@ -1,8 +1,12 @@
 from flask import Flask, render_template
+from flask_debugtoolbar import DebugToolbarExtension
 #import image
 
 app = Flask(__name__)
 app.static_folder = 'static'
+app.config.from_pyfile('config.py')
+app.debug = True
+toolbar = DebugToolbarExtension(app)
 
 @app.route('/')
 def home():
