@@ -19,6 +19,7 @@ $(window).on('load', () => {
 
       const ruleoverlay = document.getElementById('overlay')
       const share = document.getElementById('share')
+      const thanks = document.getElementById('thanks')
 
       $(share).click(function(){
         $('#share').fadeOut(100)
@@ -28,13 +29,15 @@ $(window).on('load', () => {
         $('#overlay').fadeOut(100)
       })
 
+      $(thanks).click(function(){
+        $('#thanks').fadeOut(100)
+      })
+
       guess = document.getElementById('guesstxt');
-      
-      var count = 0
 
       guess.addEventListener("keypress", function(e){
         if (e.key === 'Enter') {
-          count += 1;
+          let count = document.getElementById('guess-content').children.length + 1;
           guesstxt = $(guess).val();
           $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
           $(guess).val('')
@@ -67,3 +70,13 @@ function offShare() {
     document.getElementById("share").className = 'fade-out';
     // document.getElementById("share").style.display = "none";
   }
+
+function onThanks() {
+    document.getElementById("thanks").className = 'fade-in';
+    document.getElementById("thanks").style.display = "block";
+}
+
+function offThanks() {
+    document.getElementById("thanks").className = 'fade-out';
+    // document.getElementById("share").style.display = "none";
+}
