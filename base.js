@@ -16,10 +16,10 @@ $(window).on('load', () => {
           } 
         });
       }
-
-      const ruleoverlay = document.getElementById('overlay')
+      const overlay = document.getElementById('overlay')
       const share = document.getElementById('share')
       const thanks = document.getElementById('thanks')
+
 
       $(share).click(function(){
         $('#share').fadeOut(100)
@@ -35,14 +35,42 @@ $(window).on('load', () => {
 
       guess = document.getElementById('guesstxt');
 
+      var guess_copyandpaste = 'Play Pixel Perfect: A Game by Sean, Maaz, Pablo and Cameron: \n'
+
       guess.addEventListener("keypress", function(e){
         if (e.key === 'Enter') {
           let count = document.getElementById('guess-content').children.length + 1;
           guesstxt = $(guess).val();
+          if (guesstxt == 'test') {
+            guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': CORRECT! 😁' + '\n'
+            onOutcome()
+          }
+          else {
+            guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
+          }
           $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
           $(guess).val('')
         }
         
+      })
+
+      const button = document.getElementById('share-button')
+
+      var outcome_div = document.getElementById('outcome');
+      var outcome_txt = document.getElementById('outcome-text');
+
+      // Little code block to stop the div from disappearing when clicking in the text - will disappear when clicking outside.
+      outcome_div.addEventListener("click", function () {
+        $('#outcome').fadeOut(100);
+      }, false);
+      outcome_txt.addEventListener("click", function (ev) {
+          console.log('Does this work?');
+          ev.stopPropagation();
+      }, false);
+
+      button.addEventListener('click', function(){
+        document.getElementById("share-button").innerHTML = "Copied to Clipboard!";
+        navigator.clipboard.writeText(guess_copyandpaste)
       })
 
 });
@@ -53,11 +81,6 @@ function onRules() {
     document.getElementById("overlay").className = 'fade-in';
     document.getElementById("overlay").style.display = "block";
   }
-  
-function offRules() {
-    document.getElementById("overlay").className = 'fade-out';
-    // document.getElementById("overlay").style.display = "none";
-  }
 
 // Same principle here - for the share page
 
@@ -66,17 +89,12 @@ function onShare() {
     document.getElementById("share").style.display = "block";
   }
 
-function offShare() {
-    document.getElementById("share").className = 'fade-out';
-    // document.getElementById("share").style.display = "none";
-  }
-
 function onThanks() {
     document.getElementById("thanks").className = 'fade-in';
     document.getElementById("thanks").style.display = "block";
 }
 
-function offThanks() {
-    document.getElementById("thanks").className = 'fade-out';
-    // document.getElementById("share").style.display = "none";
+function onOutcome() {
+  document.getElementById("outcome").className = 'fade-in';
+  document.getElementById("outcome").style.display = "block";
 }

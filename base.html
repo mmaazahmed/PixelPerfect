@@ -48,9 +48,9 @@
       </nav> 
     
     <!-- Information Div - Where the rules of the game will be explained. -->
-    <div id = 'overlay'>
+    <div id = 'overlay' class = 'overlay-div'>
       <div id = 'rule-text'>
-        <h1 style = 'margin: auto;'>Rules</h1>
+        <h1 class = 'title' style = 'margin: auto;'>Rules</h1>
         <br>
         <p>You have 5 attempts to guess the content of the photo.</p>
         <p>For every wrong guess you make, the photo will become less blurry!</p>
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Thanks div - explain the context behind the game blah blah -->
-    <div id = 'thanks'>
+    <div id = 'thanks' class = 'overlay-div'>
       <div id = 'thanks-text'>
         <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
         <br>
@@ -81,6 +81,18 @@
         <p>Please enjoy playing the game.</p>
         <p>We appreciate any constructive feedback you may have.</p>
       </div>
+    </div>
+
+    <!-- Outcome Div - Display when the player wins! (or loses) - needs to change based on outcome of game -->
+    <div id = 'outcome'>
+        <div id = 'outcome-text'>
+          <h1 class = 'title' style = 'margin: auto;'>You Win/Lose!</h1>
+          <br>
+          <p>You got the correct answer in x guesses! (Or you didn't get the answer!)</p>
+          <p>The correct answer was _____</p>
+          <p>Time until next picture: _____</p>
+          <p><button id="share-button">Share</button></p>
+        </div>
     </div>
 
     <!-- Title div -->
