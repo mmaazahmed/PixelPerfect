@@ -4,9 +4,8 @@ const keyrow1 = [
 const keyrow2 =
   ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
 const keyrow3 =
-  ["submit", "z", "x", "c", "v", "b", "n", "m", "backspace"]
-
-const regex = new RegExp('[a-z]')
+  ["submit", "z", "x", "c", "v", "b", "n", "m", "\<----"]
+let input = document.getElementById('guesstxt');
 
 let createKeyboard = () => {
   let keyboardDiv = document.getElementById("keyboard")
@@ -36,12 +35,31 @@ let createKeyboard = () => {
       else {
         btn.className = 'keyboardKey'
       }
+      btn.addEventListener('click', function() {
+        let key = this.innerHTML
+        if (this.className == "longerKeyboardKey") {
+          if (key == "submit") {
+            let count = document.getElementById('guess-content').children.length + 1;
+            guesstxt = $(guess).val();
+            $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
+            $(guess).val('')
+          }
+          else {
+            let val = input.value;
+            val = val.slice(0, val.length - 1);
+            input.value = val;
+          }
+        }
+        else {
+          console.log(key)
+          input.value += key
+        }
+      })
       row.appendChild(btn);
     }
   }
   console.log("creating keyboard")
 }
 
-console.log('a'.match(regex))
 
 document.addEventListener('LoadKeyboard', createKeyboard())

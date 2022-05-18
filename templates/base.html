@@ -1,7 +1,5 @@
 <!-- Setting up the basic look of the page - including menu, sidebar, location for keyboard, etc -->
 
-<!-- Until the back end is implemented, all changes will be made to the outside code. -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,17 +14,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- CSS for Current page - can change to the below soon, but will use a more basic call to debug -->
-    <!-- <link rel = 'stylesheet' href = "{{ url_for('static',filename='styles/base.css') }}"> -->
-    <link rel = 'stylesheet' href = '/static/styles/base.css'>
+    <!-- CSS for Current page -->
+    <link rel = 'stylesheet' href = '../static/styles/base.css'>
 
     <!-- Access to Google Fonts - used for the title -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
 
     <!-- Function to display rules when clicking the settings button -->
-    <script src = '/static/js/base.js'></script>
+    <script src = '../static/js/base.js'></script>
     
-    <title>Static Pixel Perfect</title>
+    <title>Pixture Perfect</title>
 
 </head>
 <body id = 'background'>
@@ -42,23 +39,18 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><a href="#">Landmarks</a></li>
-              <li><a href="#">Album Covers</a></li>
-              <li><a href="#">Posters</a></li>
-              <li><a href="#">Paintings</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
               <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
-              <li onclick = 'onRules()'><a><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+              <li onclick = 'onRules()'><a><span class="glyphicon glyphicon-question-sign"></span> Rules</a></li>
+              <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span> Share</a></li>
             </ul>
           </div>
         </div>
       </nav> 
     
     <!-- Information Div - Where the rules of the game will be explained. -->
-    <div id = 'overlay'>
-      <div id = 'rule-text'>
-        <h1 style = 'margin: auto;'>Rules</h1>
+    <div id = 'overlay' class = 'overlay-div'>
+      <div id = 'overlay-text'>
+        <h1 class = 'title' style = 'margin: auto;'>Rules</h1>
         <br>
         <p>You have 5 attempts to guess the content of the photo.</p>
         <p>For every wrong guess you make, the photo will become less blurry!</p>
@@ -70,13 +62,37 @@
     <!-- Share div - Where we will be able to provide sharable content -->
     <div id = 'share'>
       <div id = 'share-text'>
-        <h1 style = 'margin: auto;'>Share</h1>
+        <h1 class = 'title' style = 'margin: auto;'>Share</h1>
         <br>
         <p>Thank you for playing our game!</p>
         <p>This text is clearly subject to change</p>
         <p>So I can really say whatever I want</p>
         <p>lol</p>
       </div>
+    </div>
+
+    <!-- Thanks div - explain the context behind the game blah blah -->
+    <div id = 'thanks' class = 'overlay-div'>
+      <div id = 'thanks-text'>
+        <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
+        <br>
+        <p>Thank you for playing our game!</p>
+        <p>This game was made for CITS3403 Project 1</p>
+        <p>Please enjoy playing the game.</p>
+        <p>We appreciate any constructive feedback you may have.</p>
+      </div>
+    </div>
+
+    <!-- Outcome Div - Display when the player wins! (or loses) - needs to change based on outcome of game -->
+    <div id = 'outcome'>
+        <div id = 'outcome-text'>
+          <h1 class = 'title' id = 'outcome-title' style = 'margin: auto;'>You Win/Lose!</h1>
+          <br>
+          <p id = 'outcome-eval'>You got the correct answer in <span id = 'guess-count'>x</span> guesses!</p>
+          <br>
+          <p>Time until next picture: <span id = 'countdown-timer'>_____</span></p>
+          <p><button id="share-button">Share</button></p>
+        </div>
     </div>
 
     <!-- Title div -->
@@ -94,7 +110,7 @@
 
             <!-- Div to put image into -->
             <div class = 'test-image'>
-              <img src="{{url_for('static', filename='/images/c.png')}}">
+                <img class = 'test' src = 'https://img.pixers.pics/pho_wat(s3:700/FO/72/75/79/53/700_FO72757953_53111bda26c542fb0ab0c2afcd9b611f.jpg,700,559,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,509,jpg)/stickers-happy-smiley-emoticon-face.jpg.jpg', width = 300, height = 300>
             </div>
 
             <!-- Div for guesses??? open to this changing -->
@@ -121,6 +137,6 @@
         </div>
     
     </div>
-    <script src= "{{ url_for('static',filename='/js/keyboard.js') }}"></script>
+    <script src="../static/js/keyboard.js"></script>
 </body>
 </html>
