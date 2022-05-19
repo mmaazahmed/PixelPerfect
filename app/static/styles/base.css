@@ -114,12 +114,16 @@ ul li {
     text-align: left;
 }
 
+.navbar.navbar-inverse{
+  height: 40px;
 
+}
 
 #guesstxt
 { 
   background-image: url(./text.gif);
-
+    color: #ffffff;
+    
     width: 173px;
     height: 56px;
     background-size: contain;
@@ -141,7 +145,7 @@ ul li {
 
 
 .keyboardKey{
-  background-image: url('./sont.jpg');
+  background-size: contain;
   opacity: 0.95;
   font-weight:bold;
   font-size:medium;
