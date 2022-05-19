@@ -38,13 +38,7 @@ let createKeyboard = () => {
       btn.addEventListener('click', function() {
         let key = this.innerHTML
         if (this.className == "longerKeyboardKey") {
-          if (key == "submit") {
-            let count = document.getElementById('guess-content').children.length + 1;
-            guesstxt = $(guess).val();
-            $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
-            $(guess).val('')
-          }
-          else {
+          if (key !== "submit") {
             let val = input.value;
             val = val.slice(0, val.length - 1);
             input.value = val;
