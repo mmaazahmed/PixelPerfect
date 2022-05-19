@@ -1,1 +1,0 @@
-SECRET_KEY = 'debug_key_this_is_just_for_development_nothing_to_see_here'

@@ -81,6 +81,12 @@ $(window).on('load', () => {
 
   function submit() {
     let count = document.getElementById('guess-content').children.length + 1;
+    if (count >= 6) {
+      console.log('nice try!')
+      onOutcome(false, count, correct_answer)
+      return NaN
+    }
+
     guesstxt = $(guess).val();
     let correctness;
     let payload = { guess: guesstxt, correctanswer: correct_answer }
@@ -191,5 +197,6 @@ var x = setInterval(function() {
   if (distance < 0) {
     clearInterval(x);
     document.getElementById("countdown-timer").innerHTML = "EXPIRED - Please refresh the page.";
+    // Add code here to update the answer after the countdown finishes.
   }
 }, 1000);
