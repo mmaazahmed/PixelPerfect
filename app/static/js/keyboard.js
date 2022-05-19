@@ -4,7 +4,7 @@ const keyrow1 = [
 const keyrow2 =
   ["a", "s", "d", "f", "g", "h", "j", "k", "l"]
 const keyrow3 =
-  ["submit", "z", "x", "c", "v", "b", "n", "m", "\<----"]
+  ["submit", "z", "x", "c", "v", "b", "n", "m", "back"]
 const keyrow4 = [' ']
 let input = document.getElementById('guesstxt');
 

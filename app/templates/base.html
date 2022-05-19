@@ -100,7 +100,7 @@
     <!-- Title div -->
     <div class = 'container-fluid'>
         <!-- Title -->
-        <h1 class = 'jumbotron title' style = 'background-color: rgb(40, 6, 50);'>Pixel Perfect</h1>
+        <h1 class = 'jumbotron title' style = 'background-color: rgb(40, 6, 50,0.2);'>Pixel Perfect</h1>
     </div> 
 
     <div class = 'container-fluid'>
@@ -109,17 +109,23 @@
 
         <!-- Include all information in this div - middle div makes it easier to port to mobile -->
         <div class = 'container col-sm-4'>
+            
 
+
+
+          
             <!-- Div to put image into -->
-            <div class = 'test-image'>
-                <img class = 'test' src = "../static/images/bmo.png", width = 300, height = 300>
+            <div class = 'test-image' > 
+                <img class = 'test' src = "{{url_for('static',filename = 'images/c.png')}}" width = 300, height = 300>
                 <!-- {{url_for('static',filename = 'images/c.png')}} -->
             </div>
+            
+            
 
-            <!-- Div for guesses??? open to this changing -->
-            <div id = 'guesses'>
-              <input id = 'guesstxt' type="text" name = 'hello!' action = 'processGuess()' onsubmit="processGuess()">
+            <div id = 'guesses' >
+              <input id = 'guesstxt' type="text" name = 'hello!'> 
             </div>
+            
 
             <!-- Div for keyboard -->
             <div id = 'keyboard'>
@@ -128,7 +134,7 @@
         </div>
 
         <!-- Third div empty (for now, will add sidebar later) -->
-        <div class = 'container col-sm-4' style = 'background-color: rgb(40, 6, 50);'>
+        <div class = 'container col-sm-4' style = 'background-color: rgb(40, 6, 50,0);'>
             <!-- Div where guesses will be stored -->
             <div id = 'guess-sidebar'>
                 <!-- sidebar goes here: -->
@@ -141,6 +147,6 @@
     
     </div>
     <!-- <script src="{{url_for('static',filename = 'js/keyboard.js')}}" ></script> -->
-    <script src="../static/js/keyboard.js" ></script>
+    <script src="{{url_for('static',filename = 'js/keyboard.js')}}" ></script>
 </body>
 </html>
