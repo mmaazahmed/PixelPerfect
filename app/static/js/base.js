@@ -27,6 +27,7 @@ $(window).on('load', () => {
   const thanks_txt = document.getElementById('thanks-text')
 
   const button = document.getElementById('share-button')
+  const web_button = document.getElementById('share-website')
 
   const outcome_div = document.getElementById('outcome');
   const outcome_txt = document.getElementById('outcome-text');
@@ -35,6 +36,7 @@ $(window).on('load', () => {
   const themes_txt = document.getElementById('themes-text');
 
   const base_theme = document.getElementById('base-theme')
+  const light_theme = document.getElementById('light-theme')
   const cameron_theme = document.getElementById('cameron-theme')
   const maaz_theme = document.getElementById('maaz-theme')
 
@@ -79,34 +81,37 @@ $(window).on('load', () => {
   const current_theme = document.getElementById('background')
 
   base_theme.addEventListener('click', function() {
-    current_theme.className = base_theme.id
+    current_theme.className = base_theme.id;
+    base_theme.innerHTML = 'Base Theme: Selected!';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme';
+  });
+
+  light_theme.addEventListener('click', function() {
+    current_theme.className = light_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme: Selected!';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme';
   });
 
   maaz_theme.addEventListener('click', function() {
-    current_theme.className = maaz_theme.id
+    current_theme.className = maaz_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme: Selected!';
+    cameron_theme.innerHTML = 'Cameron Theme';
+
   });
 
   cameron_theme.addEventListener('click', function() {
-    current_theme.className = cameron_theme.id
+    current_theme.className = cameron_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme: Selected!';
   });
-
-  if (current_theme.className === 'base_theme') {
-    base_theme.innerHTML = 'Selected!'
-  } else {
-    base_theme.innerHTML = 'Base Theme'
-  }
-
-  if (current_theme.className === 'cameron_theme') {
-    cameron_theme.innerHTML = 'Selected!'
-  } else {
-    cameron_theme.innerHTML = 'Cameron Theme'
-  }
-
-  if (current_theme.className === 'maaz_theme') {
-    maaz_theme.innerHTML = 'Selected!'
-  } else {
-    maaz_theme.innerHTML = 'Maaz Theme'
-  }
 
 
   // JS to add guesses to sidebar and to check for correct answer.
@@ -192,7 +197,12 @@ $(window).on('load', () => {
   button.addEventListener('click', function() {
     document.getElementById("share-button").innerHTML = "Copied to Clipboard!";
     navigator.clipboard.writeText(guess_copyandpaste)
-  })
+  });
+
+  web_button.addEventListener('click', function() {
+    web_button.innerHTML = 'Copied to Clipboard!';
+    navigator.clipboard.writeText(window.location.href);
+  });
 
 });
 
