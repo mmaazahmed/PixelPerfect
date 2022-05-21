@@ -4,6 +4,13 @@
   font-family: "Audiowide", sans-serif;
 }
 
+.subtitle {
+  text-align: center;
+  color:white;
+  font-family: "Smooch", sans-serif;
+}
+
+
 .menulink {
   color: white;
   margin:auto;
@@ -15,6 +22,10 @@
 
 .base-theme {
   background-color: rgb(34, 34, 34);
+}
+
+.light-theme {
+  background-color: rgb(220, 220, 220);
 }
 
 .maaz-theme {
