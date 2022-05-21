@@ -140,11 +140,21 @@ ul li {
     background-size: contain;
     opacity: 1;
     border: rgba(0,0,0,0.5);
+    border-radius: 5px;
     background-repeat: no-repeat;
+    padding: 5px;
+    box-shadow: inset 0 0 0 2px black;
+/*-webkit-background-clip: content-box;
+   -moz-background-clip: content-box;
+    background-clip: content-box;*/
 
-    border-image: url(./border.png);
 
 }
+.guesstext:hover {
+  box-shadow: inset 0 0 0 2px red;
+}
+
+
 
 
 #keyboard {
