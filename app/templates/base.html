@@ -28,7 +28,7 @@
     <title>Pixel Perfect</title>
 
 </head>
-<body id = 'background'>
+<body id = 'background' class = 'base-theme'>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -43,7 +43,8 @@
             <ul class="nav navbar-nav">
               <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
               <li onclick = 'onRules()'><a><span class="glyphicon glyphicon-question-sign"></span> Rules</a></li>
-              <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span> Share</a></li>
+              <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span> Thanks!</a></li>
+              <li onclick = 'onThemes()'><a href="#"><span class="glyphicon glyphicon-pencil"></span> Themes</a></li>
             </ul>
           </div>
         </div>
@@ -93,8 +94,33 @@
           <p id = 'outcome-eval'>You got the correct answer in <span id = 'guess-count'>x</span> guesses!</p>
           <br>
           <p>Time until next picture: <span id = 'countdown-timer'>_____</span></p>
-          <p><button id="share-button">Share</button></p>
+          <p><button id="share-button" class = 'press-button'>Share</button></p>
         </div>
+    </div>
+
+    <!-- Thanks div - explain the context behind the game blah blah -->
+    <div id = 'thanks' class = 'overlay-div'>
+      <div id = 'thanks-text'>
+        <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
+        <br>
+        <p>Thank you for playing our game!</p>
+        <p>This game was made for CITS3403 Project 1</p>
+        <p>Please enjoy playing the game.</p>
+        <p>We appreciate any constructive feedback you may have.</p>
+      </div>
+    </div>
+
+    <!-- Thanks div - explain the context behind the game blah blah -->
+    <div id = 'themes' class = 'overlay-div'>
+      <div id = 'themes-text'>
+        <h1 class = 'title' style = 'margin: auto;'>Themes</h1>
+        <br>
+        <p>Select from a couple of themes!</p>
+        <p>Made by different members of the team.</p>
+        <p><button id = 'base-theme' class = 'press-button'>Base Theme</button></p>
+        <p><button id = 'maaz-theme' class = 'press-button'>Maaz Theme</button></p>
+        <p><button id = 'cameron-theme' class = 'press-button'>Cameron Theme</button></p>
+      </div>
     </div>
 
     <!-- Title div -->
@@ -124,6 +150,10 @@
 
             <div id = 'guesses' >
               <input id = 'guesstxt' type="text" placeholder="         Say my name! " name = 'hello!'> 
+            </div>
+
+            <div id = 'error-div'>
+              ERROR: Remove all non-letter characters.
             </div>
             
 

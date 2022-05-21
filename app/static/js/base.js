@@ -31,6 +31,13 @@ $(window).on('load', () => {
   const outcome_div = document.getElementById('outcome');
   const outcome_txt = document.getElementById('outcome-text');
 
+  const themes_div = document.getElementById('themes');
+  const themes_txt = document.getElementById('themes-text');
+
+  const base_theme = document.getElementById('base-theme')
+  const cameron_theme = document.getElementById('cameron-theme')
+  const maaz_theme = document.getElementById('maaz-theme')
+
   // Code blocks to stop the div from disappearing when clicking in the text field, but to disappear when clicking outside the field.
   share_div.addEventListener("click", function() {
     $('#share').fadeOut(100);
@@ -61,6 +68,46 @@ $(window).on('load', () => {
     ev.stopPropagation();
   }, false);
 
+  themes_div.addEventListener("click", function() {
+    $('#themes').fadeOut(100);
+  }, false);
+
+  themes_txt.addEventListener("click", function(ev) {
+    ev.stopPropagation();
+  }, false);
+
+  const current_theme = document.getElementById('background')
+
+  base_theme.addEventListener('click', function() {
+    current_theme.className = base_theme.id
+  });
+
+  maaz_theme.addEventListener('click', function() {
+    current_theme.className = maaz_theme.id
+  });
+
+  cameron_theme.addEventListener('click', function() {
+    current_theme.className = cameron_theme.id
+  });
+
+  if (current_theme.className === 'base_theme') {
+    base_theme.innerHTML = 'Selected!'
+  } else {
+    base_theme.innerHTML = 'Base Theme'
+  }
+
+  if (current_theme.className === 'cameron_theme') {
+    cameron_theme.innerHTML = 'Selected!'
+  } else {
+    cameron_theme.innerHTML = 'Cameron Theme'
+  }
+
+  if (current_theme.className === 'maaz_theme') {
+    maaz_theme.innerHTML = 'Selected!'
+  } else {
+    maaz_theme.innerHTML = 'Maaz Theme'
+  }
+
 
   // JS to add guesses to sidebar and to check for correct answer.
   guess = document.getElementById('guesstxt');
@@ -88,6 +135,17 @@ $(window).on('load', () => {
     }
 
     guesstxt = $(guess).val();
+
+    for (char in guesstxt){
+      let letter = guesstxt[char];
+      let reg = /^[a-zA-Z\s]*$/;
+      let hmm = reg.test(letter)
+      if (hmm === false) {
+        console.log('bad guess')
+        $('#error-div').css('visibility', 'visible')
+        return(NaN)
+      }
+    }
     let correctness;
     let payload = { guess: guesstxt, correctanswer: correct_answer }
     $.ajax('/api/guessattempt', {
@@ -101,6 +159,7 @@ $(window).on('load', () => {
       }
     })
     console.log(correctness.correct);
+    $('#error-div').css('visibility', 'hidden')
     guess_correct = Boolean(correctness.correct == 'correct')
     console.log(guess_correct)
     if (guess_correct) {
@@ -164,6 +223,11 @@ function onOutcome(bool, count, correct_answer) {
     document.getElementById('outcome-eval').innerHTML = 'The correct answer was ' + correct_answer + '.';
 
   };
+}
+
+function onThemes() {
+  document.getElementById("themes").className = 'fade-in';
+  document.getElementById("themes").style.display = "block";
 }
 
 // Code to create countdown timer for each new day - Will add functionality of updating fields in the future.
