@@ -131,6 +131,7 @@ $(window).on('load', () => {
   var guess_copyandpaste = 'Play Pixel Perfect: A Game by Sean, Maaz, Pablo and Cameron: \n'
 
   let correct_answer;
+  let image = document.getElementsByClassName('test')[0]
 
   $.ajax('/api/correctanswer', {
     type: 'get',
@@ -152,14 +153,14 @@ $(window).on('load', () => {
 
     guesstxt = $(guess).val();
 
-    for (char in guesstxt){
+    for (char in guesstxt) {
       let letter = guesstxt[char];
       let reg = /^[a-zA-Z\s]*$/;
       let hmm = reg.test(letter)
       if (hmm === false) {
         console.log('bad guess')
         $('#error-div').css('visibility', 'visible')
-        return(NaN)
+        return (NaN)
       }
     }
     let correctness;
@@ -185,6 +186,7 @@ $(window).on('load', () => {
     }
     else if (guess_correct == false && count < 5) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
+      image.src = 'static/images' + count + '.png'
     }
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
