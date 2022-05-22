@@ -8,11 +8,23 @@ CITS3403
 - [X] Allow Signup to add user to new database
 - [ ] Research how to allow verification of Value sent to email
 
+# SPLIT EVERYTHING INTO SMALL TASKS
+# FOCUS ON ONE THING FIRST SO YOU DONT GET LOST
+- [ ] setup Database for Images
+    - [ ] Makepath for images
+    - [ ] 
+
+* 
+* How does the Front-End request what Photo to pick from in the backend
+
+
 #Creating Request Database to route
 - [ ] Create 
 - [ ] Allow Game to query img data from datbase
 
 
+- [ ] Replace Multiple 
+- [ ] 
 
 
 https://github.com/Vuka951/tutorial-code/tree/master/flask-file-upload

@@ -1,8 +1,10 @@
 from crypt import methods
 from distutils.log import debug
+import email
 from enum import unique
 import mimetypes
 from operator import truediv
+from socket import IOCTL_VM_SOCKETS_GET_LOCAL_CID
 from flask import (
     Flask,
     g,
@@ -34,7 +36,8 @@ class RegisterForm(FlaskForm):
 
 #---------------
 
-DATABASE_PATH = '/home/seand/Documents/git/CITS3403-Project/flasklogin'
+# DATABASE_PATH = '/home/seand/Documents/git/CITS3403-Project/flasklogin'
+DATABASE_PATH = '/home/seand/Documents/gitrepo/CITS3403-Project/flasklogin'
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -55,11 +58,21 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
-class Images(db.Model):
+
+class ImageTable(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    image = db.Column(db.String, unique=True, nullable=False)
-    answer = db.Column(db.String(10), unique=True, nullable=False)
-    mimetypes = db.Column(db.Text, nullable=False)
+    imagepath = db.Column(db.String, unique=True, nullable=False)
+    answer = db.Column(db.String, unique=True, nullable=False)
+    # mimetypes = db.Column(db.Text, nullable=False)
+
+
+class Player_History(db.Model): #Stores every session for a player
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, nullable=False) #use Username to return results for that username
+    answer_history = db.Column(db.String, unique=True, nullable=False) #Have Large Sequence
+    answer_count = db.Column(db.Integer, nullable=False)
+    img_id = db.Column(db.Integer, nullable=False)
+    date_submitted = (db.DateTime)
 
 
 #Insert some basic images into  
@@ -87,6 +100,8 @@ def signup():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
+
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
@@ -113,11 +128,22 @@ def login():
 def dash():
     return render_template('dashboard.html', name=current_user.username)
 
-@app.route('/<int:id>', methods=['POST','GET'])
+
+# Insert One Row
+# IMG_PATH = "/flasklogin/static/Acropolis.jpg"
+# IMG_ANSWER = "Acropolis"
+# #Creating Simple  Basic image with imagepath
+# img = ImageTable(imagepath=IMG_PATH,answer=IMG_ANSWER)
+# db.session.add(img)
+# db.session.commit()
+
+SELECT_IMG_PARAMETER = 1 #Selecting first reow in database
+
+@app.route('/', methods=['POST','GET'])
 def index():
     #Query Database and return using GET
-    image = Images.query.filter_by(id=id).first() #Only one return result
-    return render_template('index.html', image=image) #Get image object for Index, Run
+    image = ImageTable.query.filter_by(id=SELECT_IMG_PARAMETER).first() #Only one return result
+    return render_template('index.html', image=image, ) #Get image object for Index, Run
 
 
 
