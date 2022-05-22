@@ -16,15 +16,14 @@
 
     <!-- CSS for Current page -->
     <!-- <link rel = 'stylesheet' href = "{{ url_for('static',filename='styles/base.css' ) }}"> -->
-    <link rel = 'stylesheet' href = "../static/styles/base.css">
+    <link rel = 'stylesheet' href = "{{ url_for('static',filename='styles/base.css' ) }}">
 
     <!-- Access to Google Fonts - used for the title -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link href="https://fonts.googleapis.com/css2?family=Smooch&display=swap" rel="stylesheet"> 
 
     <!-- Function to display rules when clicking the settings button -->
-    <!-- <script src = "{{url_for('static',filename = 'js/base.js')}}" ></script> -->
-    <script src = "../static/js/base.js" ></script>
+    <script src = "{{url_for('static',filename = 'js/index.js')}}"></script>
     
     <title>Pixel Perfect</title>
 
@@ -169,7 +168,7 @@
           
             <!-- Div to put image into -->
             <div class = 'test-image' > 
-                <img class = 'test' src = "{{url_for('static',filename = 'images/c.png')}}" width = 300, height = 300>
+                <img class = 'test' src = "{{url_for('static',filename = 'images/images/bmo.png')}}" width = 300, height = 300>
                 <!-- {{url_for('static',filename = 'images/c.png')}} -->
             </div>
             

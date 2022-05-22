@@ -186,7 +186,8 @@ $(window).on('load', () => {
     }
     else if (guess_correct == false && count < 5) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
-      image.src = 'static/images' + count + '.png'
+      
+      image.src = 'static/images/tmp/' + count + '.png'
     }
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'

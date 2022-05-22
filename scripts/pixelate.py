@@ -31,13 +31,13 @@ def doShit(k,i,j,pix):
 def pixel(img,pixel_factors): #@params img= string path to the image , pixel_factor= list of pixelation factors for 5 attempts
     
    
-    path='../app/static/images/images/'
+    path='./app/static/images/images/'
     img_path= path+img
     im = Image.open(img_path)
     pix = im.load()
     row=im.size[0]
     col= im.size[1]
-    count=0
+    count=len(pixel_factors)+1
     for pf in pixel_factors:
         if pf!=0:
             block_row=row//pf # creating a block of area pf*pf to go through the image
@@ -45,8 +45,8 @@ def pixel(img,pixel_factors): #@params img= string path to the image , pixel_fac
             for i in range(block_row):
                 for j in range(block_col):
                     doShit(pf,i,j,pix)
-        count+=1
-        destination='../app/static/images/'+'tmp/'+str(count)+img[-4:]
+        count-=1
+        destination='./app/static/images/'+'tmp/'+str(count)+img[-4:]
         print(destination)
         im.save(destination)
 
