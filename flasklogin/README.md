@@ -10,8 +10,8 @@ CITS3403
 
 # SPLIT EVERYTHING INTO SMALL TASKS
 # FOCUS ON ONE THING FIRST SO YOU DONT GET LOST
-- [ ] setup Database for Images
-    - [ ] Makepath for images
+- [X] setup Database for Images
+    - [X] Makepath for images
     - [ ] 
 
 * 

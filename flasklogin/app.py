@@ -26,7 +26,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from datetime import datetime
 
 #FORM CLASSES
 #------------------
@@ -139,6 +141,7 @@ def dash():
 #OS Path
 # picfolder = os.path.join('static','images')
 # print(picfolder)
+
 app.config['UPLOAD_FOLDER'] = '/home/seand/Documents/gitrepo/CITS3403-Project/flasklogin/static/images'
 
 
@@ -150,13 +153,22 @@ app.config['UPLOAD_FOLDER'] = '/home/seand/Documents/gitrepo/CITS3403-Project/fl
 # db.session.add(img)
 # db.session.commit()
 
+for index in range(5):
+    hist = Player_History(username='Tester123',answer_history=str(index), answer_count=1, img_id=2, date_submitted = datetime.utcnow())
+    db.session.add(hist)
+    db.session.commit()
+
+
+#Need to find way to Dynamicly update Image to other Images as it changes
 SELECT_IMG_PARAMETER = 2 #Selecting first reow in database
-SELECTED_IMG = "Colosseum.jpg"
+SELECTED_IMG = secure_filename("Colosseum.jpg")
 
 #Img Returning Two Ways
 
 # 1. Process Image, Store in Directory and Map as URL
 # 2. Process Image and send images as base64 in frontend
+
+GAMEOVER_RESULTS = [""]
 
 @app.route('/', methods=['POST','GET'])
 def index():
@@ -171,6 +183,8 @@ def index():
     # image = ImageTable.query.filter_by(id=SELECT_IMG_PARAMETER).first() #Only one return result
     return render_template('index.html', filename=encode_img_data.decode('UTF-8')) #Get image object for Index, Run
     # return render_template('index.html', )
+    
+    #After Game over do something
 
 
 @app.route('/logout')
