@@ -92,7 +92,7 @@ ul li {
 }
 
 .collapsible {
-  background-color: rgb(50, 50, 50);
+  background-color: rgb(50, 50, 50, 0.4);
   color: white;
   cursor: pointer;
   padding: 18px;

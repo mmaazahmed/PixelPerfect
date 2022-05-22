@@ -169,6 +169,7 @@ $(window).on('load', () => {
     console.log(guess_correct)
     if (guess_correct) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': CORRECT! 😁' + '\n'
+      guess_copyandpaste = guess_copyandpaste + String(window.location.href)
       onOutcome(true, count, correct_answer)
     }
     else if (guess_correct == false && count < 5) {
@@ -176,6 +177,7 @@ $(window).on('load', () => {
     }
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
+      guess_copyandpaste = guess_copyandpaste + String(window.location.href)
       onOutcome(false, count, correct_answer)
     }
     $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
