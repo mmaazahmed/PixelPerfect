@@ -4,7 +4,8 @@ from crypt import methods
 from flask import request
 from scripts import pixelate
 
-guess_history=[]
+guess_history=''
+
 @app.route('/',methods=["POST"])
 @app.route('/index') 
 def index():
