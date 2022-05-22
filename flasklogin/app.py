@@ -1,6 +1,8 @@
 from crypt import methods
 from distutils.log import debug
 from enum import unique
+import mimetypes
+from operator import truediv
 from flask import (
     Flask,
     g,
@@ -39,7 +41,7 @@ Bootstrap(app)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+ DATABASE_PATH +"/database.db"
 db = SQLAlchemy(app)
-login_manager=LoginManager()
+login_manager =LoginManager()
 login_manager.init_app(app)
 login_manager.login_view  = 'login'
 
@@ -52,6 +54,16 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
+
+class Images(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String, unique=True, nullable=False)
+    answer = db.Column(db.String(10), unique=True, nullable=False)
+    mimetypes = db.Column(db.Text, nullable=False)
+
+
+#Insert some basic images into  
+
 
 
 @app.route('/signup', methods=['GET','POST'])
@@ -70,7 +82,7 @@ def signup():
         return '<h1> Successfully added New User! </h1>'
     return render_template('signup.html', form=form)
 
-#Create User Loader, Connection to flask login and actual database
+#Create User Loader, Connection to flask login a3nd actual database
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -101,10 +113,12 @@ def login():
 def dash():
     return render_template('dashboard.html', name=current_user.username)
 
-
-@app.route('/')
+@app.route('/<int:id>', methods=['POST','GET'])
 def index():
-    return render_template('index.html')
+    #Query Database and return using GET
+    image = Images.query.filter_by(id=id).first() #Only one return result
+    return render_template('index.html', image=image) #Get image object for Index, Run
+
 
 
 @app.route('/logout')
