@@ -36,9 +36,11 @@ Demo App
       <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        <p> Path of Image is: {{ image.imagepath }}</p>  <!-- Only Concerned with Path of IMG -->
-        <img src="{{ url_for('.static', filename='{{image.imagepath}}') }}">
       </div>
-
+    {% if filename %}
+      <div>
+        <img src="data:images/png;base64, {{ filename }}">
+      </div>
+    {% endif %}
     </div><!-- /.container -->
 {% endblock %}

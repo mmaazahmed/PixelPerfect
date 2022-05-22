@@ -2,6 +2,7 @@ from crypt import methods
 from distutils.log import debug
 import email
 from enum import unique
+from fileinput import filename
 import mimetypes
 from operator import truediv
 from socket import IOCTL_VM_SOCKETS_GET_LOCAL_CID
@@ -14,6 +15,11 @@ from flask import (
     session,
     url_for
 )
+import os
+from PIL import Image
+import base64
+import io
+
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
@@ -129,22 +135,42 @@ def dash():
     return render_template('dashboard.html', name=current_user.username)
 
 
-# Insert One Row
-# IMG_PATH = "/flasklogin/static/Acropolis.jpg"
-# IMG_ANSWER = "Acropolis"
+
+#OS Path
+# picfolder = os.path.join('static','images')
+# print(picfolder)
+app.config['UPLOAD_FOLDER'] = '/home/seand/Documents/gitrepo/CITS3403-Project/flasklogin/static/images'
+
+
+# # Insert One Row
+# IMG_PATH = "/images/Colosseum.jpg"
+# IMG_ANSWER = "Colosseum"
 # #Creating Simple  Basic image with imagepath
 # img = ImageTable(imagepath=IMG_PATH,answer=IMG_ANSWER)
 # db.session.add(img)
 # db.session.commit()
 
-SELECT_IMG_PARAMETER = 1 #Selecting first reow in database
+SELECT_IMG_PARAMETER = 2 #Selecting first reow in database
+SELECTED_IMG = "Colosseum.jpg"
+
+#Img Returning Two Ways
+
+# 1. Process Image, Store in Directory and Map as URL
+# 2. Process Image and send images as base64 in frontend
 
 @app.route('/', methods=['POST','GET'])
 def index():
-    #Query Database and return using GET
-    image = ImageTable.query.filter_by(id=SELECT_IMG_PARAMETER).first() #Only one return result
-    return render_template('index.html', image=image, ) #Get image object for Index, Run
 
+    #get image from dir and display
+    img = Image.open(app.config['UPLOAD_FOLDER']+"/"+SELECTED_IMG)
+    data = io.BytesIO()
+    img.save(data,"PNG")
+    encode_img_data = base64.b64encode(data.getvalue())
+
+    #Dont need a database to query images
+    # image = ImageTable.query.filter_by(id=SELECT_IMG_PARAMETER).first() #Only one return result
+    return render_template('index.html', filename=encode_img_data.decode('UTF-8')) #Get image object for Index, Run
+    # return render_template('index.html', )
 
 
 @app.route('/logout')
