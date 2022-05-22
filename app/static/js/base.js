@@ -35,6 +35,9 @@ $(window).on('load', () => {
   const themes_div = document.getElementById('themes');
   const themes_txt = document.getElementById('themes-text');
 
+  const stats_div = document.getElementById('stats');
+  const stats_txt = document.getElementById('stats-text');
+
   const base_theme = document.getElementById('base-theme')
   const light_theme = document.getElementById('light-theme')
   const cameron_theme = document.getElementById('cameron-theme')
@@ -75,6 +78,14 @@ $(window).on('load', () => {
   }, false);
 
   themes_txt.addEventListener("click", function(ev) {
+    ev.stopPropagation();
+  }, false);
+
+  stats_div.addEventListener("click", function() {
+    $('#stats').fadeOut(100);
+  }, false);
+
+  stats_txt.addEventListener("click", function(ev) {
     ev.stopPropagation();
   }, false);
 
@@ -240,6 +251,11 @@ function onOutcome(bool, count, correct_answer) {
 function onThemes() {
   document.getElementById("themes").className = 'fade-in';
   document.getElementById("themes").style.display = "block";
+}
+
+function onStats() {
+  document.getElementById("stats").className = 'fade-in';
+  document.getElementById("stats").style.display = "block";
 }
 
 // Code to create countdown timer for each new day - Will add functionality of updating fields in the future.

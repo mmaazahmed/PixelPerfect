@@ -20,6 +20,7 @@
 
     <!-- Access to Google Fonts - used for the title -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link href="https://fonts.googleapis.com/css2?family=Smooch&display=swap" rel="stylesheet"> 
 
     <!-- Function to display rules when clicking the settings button -->
     <!-- <script src = "{{url_for('static',filename = 'js/base.js')}}" ></script> -->
@@ -48,6 +49,7 @@
             </ul>
             <ul class = 'nav navbar-nav pull-right'>
               <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+              <li><a onclick = 'onStats()'><span class="glyphicon glyphicon-stats"></span> Stats</a></li>
             </ul>
           </div>
         </div>
@@ -113,7 +115,7 @@
       </div>
     </div>
 
-    <!-- Thanks div - explain the context behind the game blah blah -->
+    <!-- Themes div - Add your themes! -->
     <div id = 'themes' class = 'overlay-div'>
       <div id = 'themes-text'>
         <h1 class = 'title' style = 'margin: auto;'>Themes</h1>
@@ -124,6 +126,27 @@
         <p><button id = 'light-theme' class = 'press-button'>Light Theme</button></p>
         <p><button id = 'maaz-theme' class = 'press-button'>Maaz Theme</button></p>
         <p><button id = 'cameron-theme' class = 'press-button'>Cameron Theme</button></p>
+      </div>
+    </div>
+
+    <!-- Stats div - Where all the stats are ez money -->
+    <div id = 'stats' class = 'overlay-div'>
+      <div id = 'stats-text'>
+        <h1 class = 'title' style = 'margin: auto;'>Stats</h1>
+        <br>
+        <h2 class = 'subtitle'>Current Streak: </h2><br>
+        <div id = 'current-streak'>
+          <!-- Put current streak stuff here -->
+        </div>
+        <h2 class = 'subtitle'>Best Streak: </h2><br>
+        <div id = 'best-streak'>
+          <!-- Put current streak here -->
+        </div>
+        <!-- Put best streak here -->
+        <h2 class = 'subtitle'>Guess Breakdown: </h2><br>
+        <div id = 'guess-breakdown'>
+          <!-- Put guess breakdown here -->
+        </div>
       </div>
     </div>
 
