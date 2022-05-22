@@ -50,4 +50,4 @@ def pixel(img,pixel_factors): #@params img= string path to the image , pixel_fac
         print(destination)
         im.save(destination)
 
-pixel('bmo.png',[2,4,6,8,16])
+
