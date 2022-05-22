@@ -20,6 +20,39 @@ __pycache__/
 *.sln.docstates
 # C extensions
 *.so
+<<<<<<< HEAD
+# VS Code files for those working on multiple tools
+=======
+# Local History for Visual Studio Code
+.history/
+
+# Visual Studio History (VSHistory) files
+.vshistory/
+
+# Python Tools for Visual Studio (PTVS)
+__pycache__/
+*.pyc
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+# C extensions
+*.so
+# vs code
+>>>>>>> eb7d238d7988a56c5cba1cc73ba357c8dd20a792
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.vscode/*
+!.vscode/*.code-snippets
+.slnx
+
 # VS Code files for those working on multiple tools
 .vscode/*
 !.vscode/settings.json

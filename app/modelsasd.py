@@ -18,6 +18,11 @@ class User(db.model,UserMixin):
     def __init__(self, user_id,username, password, email):
         self.username = username
         self.password = generate_password_hash(password)
+<<<<<<< HEAD:app/modelsasd.py
+=======
+        self.name = name
+
+>>>>>>> eb7d238d7988a56c5cba1cc73ba357c8dd20a792:app/models.py
         self.email = email
     
     def __repr__(self):
