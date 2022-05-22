@@ -25,6 +25,14 @@ __pycache__/
 *.sln.docstates
 # C extensions
 *.so
+# vs code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.slnx
 
 # VS Code files for those working on multiple tools
 .vscode/*
