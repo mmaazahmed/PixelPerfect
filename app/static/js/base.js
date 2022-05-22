@@ -27,9 +27,21 @@ $(window).on('load', () => {
   const thanks_txt = document.getElementById('thanks-text')
 
   const button = document.getElementById('share-button')
+  const web_button = document.getElementById('share-website')
 
   const outcome_div = document.getElementById('outcome');
   const outcome_txt = document.getElementById('outcome-text');
+
+  const themes_div = document.getElementById('themes');
+  const themes_txt = document.getElementById('themes-text');
+
+  const stats_div = document.getElementById('stats');
+  const stats_txt = document.getElementById('stats-text');
+
+  const base_theme = document.getElementById('base-theme')
+  const light_theme = document.getElementById('light-theme')
+  const cameron_theme = document.getElementById('cameron-theme')
+  const maaz_theme = document.getElementById('maaz-theme')
 
   // Code blocks to stop the div from disappearing when clicking in the text field, but to disappear when clicking outside the field.
   share_div.addEventListener("click", function() {
@@ -61,6 +73,57 @@ $(window).on('load', () => {
     ev.stopPropagation();
   }, false);
 
+  themes_div.addEventListener("click", function() {
+    $('#themes').fadeOut(100);
+  }, false);
+
+  themes_txt.addEventListener("click", function(ev) {
+    ev.stopPropagation();
+  }, false);
+
+  stats_div.addEventListener("click", function() {
+    $('#stats').fadeOut(100);
+  }, false);
+
+  stats_txt.addEventListener("click", function(ev) {
+    ev.stopPropagation();
+  }, false);
+
+  const current_theme = document.getElementById('background')
+
+  base_theme.addEventListener('click', function() {
+    current_theme.className = base_theme.id;
+    base_theme.innerHTML = 'Base Theme: Selected!';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme';
+  });
+
+  light_theme.addEventListener('click', function() {
+    current_theme.className = light_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme: Selected!';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme';
+  });
+
+  maaz_theme.addEventListener('click', function() {
+    current_theme.className = maaz_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme: Selected!';
+    cameron_theme.innerHTML = 'Cameron Theme';
+
+  });
+
+  cameron_theme.addEventListener('click', function() {
+    current_theme.className = cameron_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme: Selected!';
+  });
+
 
   // JS to add guesses to sidebar and to check for correct answer.
   guess = document.getElementById('guesstxt');
@@ -68,6 +131,7 @@ $(window).on('load', () => {
   var guess_copyandpaste = 'Play Pixel Perfect: A Game by Sean, Maaz, Pablo and Cameron: \n'
 
   let correct_answer;
+  let image = document.getElementsByClassName('test')[0]
 
   $.ajax('/api/correctanswer', {
     type: 'get',
@@ -88,6 +152,17 @@ $(window).on('load', () => {
     }
 
     guesstxt = $(guess).val();
+
+    for (char in guesstxt) {
+      let letter = guesstxt[char];
+      let reg = /^[a-zA-Z\s]*$/;
+      let hmm = reg.test(letter)
+      if (hmm === false) {
+        console.log('bad guess')
+        $('#error-div').css('visibility', 'visible')
+        return (NaN)
+      }
+    }
     let correctness;
     let payload = { guess: guesstxt, correctanswer: correct_answer }
     $.ajax('/api/guessattempt', {
@@ -101,17 +176,21 @@ $(window).on('load', () => {
       }
     })
     console.log(correctness.correct);
+    $('#error-div').css('visibility', 'hidden')
     guess_correct = Boolean(correctness.correct == 'correct')
     console.log(guess_correct)
     if (guess_correct) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': CORRECT! 😁' + '\n'
+      guess_copyandpaste = guess_copyandpaste + String(window.location.href)
       onOutcome(true, count, correct_answer)
     }
     else if (guess_correct == false && count < 5) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
+      image.src = 'static/images' + count + '.png'
     }
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
+      guess_copyandpaste = guess_copyandpaste + String(window.location.href)
       onOutcome(false, count, correct_answer)
     }
     $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
@@ -133,7 +212,12 @@ $(window).on('load', () => {
   button.addEventListener('click', function() {
     document.getElementById("share-button").innerHTML = "Copied to Clipboard!";
     navigator.clipboard.writeText(guess_copyandpaste)
-  })
+  });
+
+  web_button.addEventListener('click', function() {
+    web_button.innerHTML = 'Copied to Clipboard!';
+    navigator.clipboard.writeText(window.location.href);
+  });
 
 });
 
@@ -164,6 +248,16 @@ function onOutcome(bool, count, correct_answer) {
     document.getElementById('outcome-eval').innerHTML = 'The correct answer was ' + correct_answer + '.';
 
   };
+}
+
+function onThemes() {
+  document.getElementById("themes").className = 'fade-in';
+  document.getElementById("themes").style.display = "block";
+}
+
+function onStats() {
+  document.getElementById("stats").className = 'fade-in';
+  document.getElementById("stats").style.display = "block";
 }
 
 // Code to create countdown timer for each new day - Will add functionality of updating fields in the future.

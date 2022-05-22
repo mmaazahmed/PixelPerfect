@@ -7,7 +7,7 @@ from scripts import pixelate
 guess_history=''
 
 @app.route('/',methods=["POST"])
-@app.route('/index') 
+@app.route('/index')
 def index():
     if request.method=='POST':
         guess= request.form.get("guesstxt")
@@ -16,6 +16,11 @@ def index():
         pixelate.init()
         pixelate.pixel("bmo.png",len(guess_history))
         print("imhere",guess_history)
-        return render_template('base.html')
+        return render_template('index.html')
     else:
-        return render_template('base.html')
+        return render_template('index.html')
+    
+@app.route('/login.html')
+def login():
+    return render_template('login.html')
+
