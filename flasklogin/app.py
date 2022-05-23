@@ -2,7 +2,12 @@ from crypt import methods
 from dbm import dumb
 from distutils.log import debug
 from email.policy import default
+import email
 from enum import unique
+from fileinput import filename
+import mimetypes
+from operator import truediv
+from socket import IOCTL_VM_SOCKETS_GET_LOCAL_CID
 from flask import (
     Flask,
     g,
@@ -12,7 +17,10 @@ from flask import (
     session,
     url_for
 )
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+import os
+from PIL import Image
+import base64
+import io
 
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -21,6 +29,10 @@ from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+from werkzeug.utils import secure_filename
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from datetime import datetime
+
 #FORM CLASSES
 #------------------
 class LoginForm(FlaskForm):
@@ -35,14 +47,15 @@ class RegisterForm(FlaskForm):
 
 #---------------
 
-DATABASE_PATH = '/home/seand/Documents/git/CITS3403-Project/flasklogin'
+# DATABASE_PATH = '/home/seand/Documents/git/CITS3403-Project/flasklogin'
+DATABASE_PATH = '/home/seand/Documents/gitrepo/CITS3403-Project/flasklogin'
 
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+ DATABASE_PATH +"/database.db"
 db = SQLAlchemy(app)
-login_manager=LoginManager()
+login_manager =LoginManager()
 login_manager.init_app(app)
 login_manager.login_view  = 'login'
 
@@ -74,6 +87,26 @@ class Player_History(db.Model): #Stores every session for a player
 
 
 
+class ImageTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    imagepath = db.Column(db.String, unique=True, nullable=False)
+    answer = db.Column(db.String, unique=True, nullable=False)
+    # mimetypes = db.Column(db.Text, nullable=False)
+
+
+class Player_History(db.Model): #Stores every session for a player
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, nullable=False) #use Username to return results for that username
+    answer_history = db.Column(db.String, unique=True, nullable=False) #Have Large Sequence
+    answer_count = db.Column(db.Integer, nullable=False)
+    img_id = db.Column(db.Integer, nullable=False)
+    date_submitted = (db.DateTime)
+
+
+#Insert some basic images into  
+
+
+
 @app.route('/signup', methods=['GET','POST'])
 def signup():
     form = RegisterForm()
@@ -92,9 +125,11 @@ def signup():
 
 
 #Create User Loader, Connection to flask login and actual database
+#Create User Loader, Connection to flask login a3nd actual database
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -152,9 +187,54 @@ def dash():
 
 
 
-@app.route('/')
+
+#OS Path
+# picfolder = os.path.join('static','images')
+# print(picfolder)
+
+app.config['UPLOAD_FOLDER'] = '/home/seand/Documents/gitrepo/CITS3403-Project/flasklogin/static/images'
+
+
+# # Insert One Row
+# IMG_PATH = "/images/Colosseum.jpg"
+# IMG_ANSWER = "Colosseum"
+# #Creating Simple  Basic image with imagepath
+# img = ImageTable(imagepath=IMG_PATH,answer=IMG_ANSWER)
+# db.session.add(img)
+# db.session.commit()
+
+for index in range(5):
+    hist = Player_History(username='Tester123',answer_history=str(index), answer_count=1, img_id=2, date_submitted = datetime.utcnow())
+    db.session.add(hist)
+    db.session.commit()
+
+
+#Need to find way to Dynamicly update Image to other Images as it changes
+SELECT_IMG_PARAMETER = 2 #Selecting first reow in database
+SELECTED_IMG = secure_filename("Colosseum.jpg")
+
+#Img Returning Two Ways
+
+# 1. Process Image, Store in Directory and Map as URL
+# 2. Process Image and send images as base64 in frontend
+
+GAMEOVER_RESULTS = [""]
+
+@app.route('/', methods=['POST','GET'])
 def index():
-    return render_template('index.html')
+
+    #get image from dir and display
+    img = Image.open(app.config['UPLOAD_FOLDER']+"/"+SELECTED_IMG)
+    data = io.BytesIO()
+    img.save(data,"PNG")
+    encode_img_data = base64.b64encode(data.getvalue())
+
+    #Dont need a database to query images
+    # image = ImageTable.query.filter_by(id=SELECT_IMG_PARAMETER).first() #Only one return result
+    return render_template('index.html', filename=encode_img_data.decode('UTF-8')) #Get image object for Index, Run
+    # return render_template('index.html', )
+    
+    #After Game over do something
 
 
 @app.route('/logout')
