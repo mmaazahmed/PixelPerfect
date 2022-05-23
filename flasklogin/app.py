@@ -1,5 +1,7 @@
 from crypt import methods
+from dbm import dumb
 from distutils.log import debug
+from email.policy import default
 from enum import unique
 from flask import (
     Flask,
@@ -10,14 +12,15 @@ from flask import (
     session,
     url_for
 )
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-
+import datetime
 #FORM CLASSES
 #------------------
 class LoginForm(FlaskForm):
@@ -53,6 +56,23 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
+class ImageTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    imagepath = db.Column(db.String, unique=True, nullable=False)
+    answer = db.Column(db.String, unique=True, nullable=False)
+    # mimetypes = db.Column(db.Text, nullable=False)
+
+
+class Player_History(db.Model): #Stores every session for a player
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, nullable=False) #use Username to return results for that username
+    answer_history = db.Column(db.String, nullable=False) #Have Large Sequence
+    answer_count = db.Column(db.Integer, nullable=False)
+    img_id = db.Column(db.Integer, nullable=False)
+    date_submitted = db.Column(db.DateTime, nullable=True)
+
+
+
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
@@ -70,10 +90,12 @@ def signup():
         return '<h1> Successfully added New User! </h1>'
     return render_template('signup.html', form=form)
 
+
 #Create User Loader, Connection to flask login and actual database
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -88,18 +110,46 @@ def login():
             if check_password_hash(user.password, form.password.data): #Password Correct!
                 login_user(user, remember=form.username.data)
                 return redirect(url_for('dash'))
-        
+
         #username or password doesnt exist
         return '<h1> Invalid username or password </h1>' #
 
     #not submitted render template
     return render_template('login.html', form=form) # Pass form to template for form object to be used in login.html
 
+#Create some Rows for Player historyw 
+
+# def dateNow():
+#     today = datetime.datetime.now()
+#     date_time = today.strftime("%Y-%m-%d %H:%M:%S")
+#     return date_time
+shit = "2022-05-23 23:33:40"
+# datetime.datetime.now()
+def Dump():
+    for _ in range(1):
+        hist = Player_History(
+                    username="Testings", 
+                    answer_history= "Taj Mahal|Reeses Puff|Grand Canyon|St. Petersburg",
+                    answer_count = 4,
+                    img_id = 11, 
+                    date_submitted= datetime.datetime.now()
+                    )
+                    
+        db.session.add(hist)
+        db.session.commit()
+
+# Dump()
+
 #Cannot Access Dashboard without login
 @app.route('/dashboard')
 @login_required
 def dash():
-    return render_template('dashboard.html', name=current_user.username)
+    headings = ["ID", "Username", "Answer_History", "Answer_Count","img_id","DateSubmitted"]
+    player_history = Player_History.query.filter_by(username=current_user.username) #Returns Rows
+    return render_template('dashboard.html', name=current_user.username, player_history=player_history, headings=headings)
+
+
+
 
 
 @app.route('/')
