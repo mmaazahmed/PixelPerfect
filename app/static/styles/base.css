@@ -1,7 +1,36 @@
+#nav {
+  position: static;
+  z-index: 9999;
+}
+
+#myNavbar{
+  background-color: rgb(39, 39, 39);
+  border-radius: 10px;
+  position: static;
+  z-index: 300;
+}
+
+#dropdown-list {
+  background-color: rgb(39, 39, 39);
+  padding: 10px;
+  border-radius: 10px;
+  position: static;
+  z-index: 200;
+}
+
+.list-item {
+  background-color: rgb(39, 39, 39);
+  z-index: 500;
+  border-radius: 10px;
+  position: static;
+  z-index: 100;
+}
+
 .title {
   text-align: center;
   color:white;
   font-family: "Audiowide", sans-serif;
+  z-index: 1;
 }
 
 .subtitle {
@@ -42,11 +71,8 @@
   display: flex;
   justify-content: space-around;
   width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  border-width: 25px;
-  border-style: solid;
-  border-image: url(./border.png) 25% round;
+  margin: auto;
+  z-index: 1;
 }
 
 
@@ -60,7 +86,11 @@
 
 ul li {
   color: white;
-  margin-bottom: 30px;
+}
+
+.col-sm-4 {
+  position: static;
+  z-index: 1;
 }
        
 #overlay, #share, #thanks, #outcome, #themes, #stats {
@@ -73,7 +103,7 @@ ul li {
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2;
+  z-index: 5000;
 }
 
 /* Design of the text in the in-game overlay. */
@@ -218,7 +248,7 @@ ul li {
   width: 100%;
   padding: 3px;
   
-font-size: 1rem;
+  font-size: 1rem;
   
 }
 
