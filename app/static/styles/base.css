@@ -49,9 +49,10 @@ html, body {
 }
 
 .subtitle {
-  text-align: left;
+  text-align: center;
   color:white;
   font-family: "Smooch", sans-serif;
+  size: 20px;
 }
 
 
@@ -129,7 +130,75 @@ ul li {
 }
 
 /* Design of the text in the in-game overlay. */
-#overlay-text, #share-text, #thanks-text, #outcome-text, #themes-text, #stats-text, #leaderboard-text, .indiv-content{
+#overlay-text.base, 
+#share-text.base, 
+#thanks-text.base, 
+#outcome-text.base, 
+#themes-text.base, 
+#stats-text.base, 
+#leaderboard-text.base{
+  background-color: rgb(39, 39, 39);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: 2px solid rgb(89, 89, 89);
+}
+
+#overlay-text.light, 
+#share-text.light, 
+#thanks-text.light, 
+#outcome-text.light, 
+#themes-text.light, 
+#stats-text.light, 
+#leaderboard-text.light{
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  color: rgb(39, 39, 39);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: 2px solid rgb(39, 39, 39);
+  display: grid
+}
+
+#overlay-text.maaz, 
+#share-text.maaz, 
+#thanks-text.maaz, 
+#outcome-text.maaz, 
+#themes-text.maaz, 
+#stats-text.maaz, 
+#leaderboard-text.maaz{
+  background-color: rgb(164, 233, 186);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: 2px solid rgb(1, 130, 40);
+  display: grid
+}
+
+#overlay-text.cameron, 
+#share-text.cameron, 
+#thanks-text.cameron, 
+#outcome-text.cameron, 
+#themes-text.cameron, 
+#stats-text.cameron, 
+#leaderboard-text.cameron{
   background-color: rgb(40, 6, 50);
   padding: 10px;
   position: absolute;
@@ -141,6 +210,7 @@ ul li {
   -ms-transform: translate(-50%,-50%);
   border-radius: 10px;
   border: 2px solid rgb(141, 13, 180);
+  display: grid
 }
 
 .collapsible {
@@ -348,13 +418,13 @@ border-radius: 8px;
 border-width: 0;
 color: #ffffff;
 cursor: pointer;
-display: inline-block;
+display: flex;
 font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 font-weight: 500;
 line-height: 20px;
 list-style: none;
-margin: 0;
+margin: auto;
 padding: 10px 13px;
 text-align: center;
 transition: all 100ms;
@@ -363,6 +433,7 @@ white-space: nowrap;
 user-select: none;
 -webkit-user-select: none;
 touch-action: manipulation;
+
 }
 
 #error-div {
@@ -376,10 +447,40 @@ touch-action: manipulation;
   text-align: center;
 }
 
-.leaderboard-display {
+.info-text-base {
+  border-radius: 10px;
+  background-color: rgb(41, 41, 41);
+  color: white;
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+.info-text-light {
+  border-radius: 10px;
+  background-color: rgb(220, 220, 220);
+  color: rgb(39, 39, 39);
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+.info-text-maaz {
+  border-radius: 10px;
+  background-color: rgb(69, 243, 95);
+  color: white;
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+.info-text-cameron {
   border-radius: 10px;
   background-color: rgb(164, 0, 164);
   color: white;
   padding:10px;
   margin:10px;
+  text-align:center
 }
+
+

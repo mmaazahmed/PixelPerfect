@@ -55,69 +55,91 @@
     
     <!-- Information Div - Where the rules of the game will be explained. -->
     <div id = 'overlay' class = 'overlay-panel'>
-      <div id = 'overlay-text' class = 'base-div'>
+      <div id = 'overlay-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Rules</h1>
         <br>
         <h2 class = 'subtitle'>Welcome to Pixel Perfect!</h2>
-        <p>You will be given a very blurry image. Try to guess what it is!</p>
-        <p>If you can't get it, not to worry! </p>
-        <p>For every incorrect answer, the photo will become less blurry.</p>
-        <p>A new photo will be shown every day.</p>
-        <p>This website was made for the CITS3403 Project by Sean, Maaz, Pablo and Cameron.</p>
+        <div class = 'info-text-base'>
+          <p>You will be given a very blurry image. Try to guess what it is!</p>
+          <p>If you can't get it, not to worry! </p>
+          <p>For every incorrect answer, the photo will become less blurry.</p>
+          <p>A new photo will be shown every day.</p>
+          <p>This website was made for the CITS3403 Project by Sean, Maaz, Pablo and Cameron.</p>
+        </div>
       </div>
     </div>
 
     <!-- Share div - Where we will be able to provide sharable content -->
     <div id = 'share' class = 'overlay-panel'>
-      <div id = 'share-text' class = 'base-div'>
+      <div id = 'share-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Share</h1>
         <br>
-        <p>Thank you for playing our game!</p>
-        <p>To share your score, tap enter or 'submit' and tap the share button in the overlay.</p>
-        <p>To share the website, click the button below.</p>
-        <p><button id="share-website" class = 'press-button'>Share</button></p>
+        <div class = 'info-text-base'>
+          <p>Thank you for playing our game!</p>
+          <p>To share your score, tap enter or 'submit' and tap the share button in the overlay.</p>
+          <p>To share the website, click the button below.</p>
+          <p><button id="share-website" class = 'press-button'>Share</button></p>
+        </div>
       </div>
     </div>
 
     <!-- Thanks div - explain the context behind the game blah blah -->
     <div id = 'thanks' class = 'overlay-panel'>
-      <div id = 'thanks-text' class = 'base-div'>
+      <div id = 'thanks-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
         <br>
-        <p>Thank you for playing our game!</p>
-        <p>This game was made for CITS3403 Project 1</p>
-        <p>Please enjoy playing the game.</p>
-        <p>We appreciate any constructive feedback you may have.</p>
+        <div class = 'info-text-base'>
+          <p>Thank you for playing our game!</p>
+          <p>This game was made for CITS3403 Project 1</p>
+          <p>Please enjoy playing the game.</p>
+          <p>We appreciate any constructive feedback you may have.</p>
+        </div>
       </div>
     </div>
 
     <!-- Outcome Div - Display when the player wins! (or loses) - needs to change based on outcome of game -->
     <div id = 'outcome' class = 'overlay-panel'>
-        <div id = 'outcome-text' class = 'base-div'>
-          <h1 class = 'title' id = 'outcome-title' style = 'margin: auto;'>You Win/Lose!</h1>
-          <br>
-          <p id = 'outcome-eval'>You got the correct answer in <span id = 'guess-count'>x</span> guesses!</p>
-          <br>
-          <p>Time until next picture: <span id = 'countdown-timer'>_____</span></p>
-          <p><button id="share-button" class = 'press-button'>Share</button></p>
-        </div>
+          <div id = 'outcome-text' class = 'base'>
+            <h1 class = 'title' id = 'outcome-title' style = 'margin: auto;'>You Win/Lose!</h1>
+            <br>
+            <p id = 'outcome-eval'>You got the correct answer in <span id = 'guess-count'>x</span> guesses!</p>
+            <br>
+            <p>Time until next picture: <span id = 'countdown-timer'>_____</span></p>
+            <p><button id="share-button" class = 'press-button'>Share</button></p>
+            <br>
+          
+            <h1 class = 'title'>Stats</h1>
+            <br>
+            <h2 class = 'subtitle'>Current Streak: <span id = 'current_streak' class = 'subtitle'>x</span></h2> <!--Put current streak in this span-->
+            <br>
+            <h2 class = 'subtitle'>Best Streak: <span id = 'best_streak' class = 'subtitle'>x</span></h2> <!--Put best streak in this span-->
+            <br>
+            <h2 class = 'subtitle'>Guess Breakdown: </h2>
+            <div id = 'guess_breakdown'>
+              Put info on number of times taken for each guess here.
+            </div>
+          </div>
+
+
     </div>
 
     <!-- Thanks div - explain the context behind the game blah blah -->
     <div id = 'thanks' class = 'overlay-panel'>
-      <div id = 'thanks-text' class = 'base-div'>
+      <div id = 'thanks-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
         <br>
-        <p>Thank you for playing our game!</p>
-        <p>This game was made for CITS3403 Project 1</p>
-        <p>Please enjoy playing the game.</p>
-        <p>We appreciate any constructive feedback you may have.</p>
+        <div class = 'info-text-base'>
+          <p>Thank you for playing our game!</p>
+          <p>This game was made for CITS3403 Project 1</p>
+          <p>Please enjoy playing the game.</p>
+          <p>We appreciate any constructive feedback you may have.</p>
+        </div>
       </div>
     </div>
 
     <!-- Themes div - Add your themes! -->
     <div id = 'themes' class = 'overlay-panel'>
-      <div id = 'themes-text' class = 'base-div'>
+      <div id = 'themes-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Themes</h1>
         <br>
         <p>Select from a couple of themes!</p>
@@ -131,7 +153,7 @@
 
     <!-- Stats div - Where all the stats are ez money -->
     <div id = 'stats' class = 'overlay-panel'>
-      <div id = 'stats-text' class = 'base-div'>
+      <div id = 'stats-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Stats</h1>
         <br>
         <h2 class = 'subtitle'>Current Streak: </h2><br>
@@ -152,7 +174,7 @@
 
     <!-- Leaderboard div - Where all the stats are ez money -->
     <div id = 'leaderboard' class = 'overlay-panel'>
-      <div id = 'leaderboard-text' class = 'base-div'>
+      <div id = 'leaderboard-text' class = 'base'>
         <h1 class = 'title'> Leaderboard </h1>
         <div id = 'top-5' class = 'leaderboard-display'>
           <h2 class = 'subtitle'>
