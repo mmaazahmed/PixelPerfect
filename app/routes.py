@@ -1,19 +1,22 @@
-from ast import Global
-from pickle import TRUE
+#from ast import Global
+#from pickle import TRUE
+
+from datetime import datetime
 from flask import render_template, url_for
 from app import app
-from crypt import methods
+#from crypt import methods
 from flask import request
-from scripts import pixelate
+from config import Config
 
-imagepath='bmo.png'
-pfs=[4,8,16,32,64]
-print(imagepath,pfs)
+
+
 @app.route('/')
 @app.route('/index')
 def index():
-    pixelate.pixel(imagepath,pfs)
+    #print(datetime.now())
     return render_template('index.html')
+
+    
     
 @app.route('/login.html')
 def login():

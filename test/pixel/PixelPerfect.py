@@ -28,7 +28,7 @@ def doShit(k,i,j,pix):
     c[2]=0
 
 
-def pixel(img,pixel_factors): #@params img= string path to the image , pixel_factor= list of pixelation factors for 5 attempts
+def pixelate(img,pixel_factors): #@params img= string path to the image , pixel_factor= list of pixelation factors for 5 attempts
     
    
     path='./app/static/images/images/'
