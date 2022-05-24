@@ -20,7 +20,7 @@ def assignAvg(k,Xoffset,Yoffset,pix,avg):
             pix[i+Xoffset,j+Yoffset]=tuple(avg)
             
             
-def doShit(k,i,j,pix):
+def doStuff(k,i,j,pix):
     avg=iterateThroughKbox(k,i*k,j*k,pix)
     assignAvg(k,(i*k),j*k,pix,avg)
     c[0]=0
@@ -44,7 +44,7 @@ def pixel(img,pixel_factors): #@params img= string path to the image , pixel_fac
             block_col=col//pf
             for i in range(block_row):
                 for j in range(block_col):
-                    doShit(pf,i,j,pix)
+                    doStuff(pf,i,j,pix)
         count-=1
         destination='./app/static/images/'+'tmp/'+str(count)+img[-4:]
         print(destination)
