@@ -1,3 +1,9 @@
+html, body { 
+  margin: 0; 
+  padding: 0; 
+  height: 100%; 
+  width: 100%;}
+
 #nav {
   position: static;
   z-index: 9999;
@@ -26,17 +32,27 @@
   z-index: 100;
 }
 
+.main-title {
+  text-align: center;
+  color:white;
+  font-family: "Audiowide", sans-serif;
+  z-index: 1;
+  padding: 0px 0px 30px 0px;
+}
+
 .title {
   text-align: center;
   color:white;
   font-family: "Audiowide", sans-serif;
   z-index: 1;
+  padding: 0px;
 }
 
 .subtitle {
   text-align: center;
   color:white;
   font-family: "Smooch", sans-serif;
+  size: 20px;
 }
 
 
@@ -51,31 +67,38 @@
 
 .base-theme {
   background-color: rgb(34, 34, 34);
+  width: 100%;
+  height: 100%;
 }
 
 .light-theme {
   background-color: rgb(220, 220, 220);
+  width: 100%;
+  height: 100%;
 }
 
 .maaz-theme {
   background-image: url(hello.jpg);
   opacity: 0.95;
+  width: 100%;
+  height: 100%;
 }
 
 .cameron-theme {
-  background: rgb(32,0,36);
-  background: linear-gradient(19deg, rgba(32,0,36,1) 0%, rgba(74,4,75,1) 37%, rgba(111,8,108,1) 60%, rgba(156,13,149,1) 84%, rgba(201,18,189,1) 100%);
+  /* background: rgb(238,0,255); */
+  background: linear-gradient(47deg, rgba(238,0,255,1) 0%, rgba(126,0,255,1) 100%); 
+  width: 100%;
+  height: 100%;
 }
 
 .test-image {
-  display: flex;
+  display:flex;
   justify-content: space-around;
   width: max-content;
+  height:max-content;
   margin: auto;
   z-index: 1;
 }
-
-
 
 .info {
   color: white;
@@ -93,7 +116,7 @@ ul li {
   z-index: 1;
 }
        
-#overlay, #share, #thanks, #outcome, #themes, #stats {
+#overlay, #share, #thanks, #outcome, #themes, #stats, #leaderboard  {
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
@@ -107,7 +130,75 @@ ul li {
 }
 
 /* Design of the text in the in-game overlay. */
-#overlay-text, #share-text, #thanks-text, #outcome-text, #themes-text, #stats-text{
+#overlay-text.base, 
+#share-text.base, 
+#thanks-text.base, 
+#outcome-text.base, 
+#themes-text.base, 
+#stats-text.base, 
+#leaderboard-text.base{
+  background-color: rgb(39, 39, 39);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: 2px solid rgb(89, 89, 89);
+}
+
+#overlay-text.light, 
+#share-text.light, 
+#thanks-text.light, 
+#outcome-text.light, 
+#themes-text.light, 
+#stats-text.light, 
+#leaderboard-text.light{
+  background-color: rgb(200, 200, 200);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  color: rgb(39, 39, 39);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: 2px solid rgb(39, 39, 39);
+  display: grid
+}
+
+#overlay-text.maaz, 
+#share-text.maaz, 
+#thanks-text.maaz, 
+#outcome-text.maaz, 
+#themes-text.maaz, 
+#stats-text.maaz, 
+#leaderboard-text.maaz{
+  background-color: rgb(164, 233, 186);
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  border-radius: 10px;
+  border: 2px solid rgb(1, 130, 40);
+  display: grid
+}
+
+#overlay-text.cameron, 
+#share-text.cameron, 
+#thanks-text.cameron, 
+#outcome-text.cameron, 
+#themes-text.cameron, 
+#stats-text.cameron, 
+#leaderboard-text.cameron{
   background-color: rgb(40, 6, 50);
   padding: 10px;
   position: absolute;
@@ -119,6 +210,7 @@ ul li {
   -ms-transform: translate(-50%,-50%);
   border-radius: 10px;
   border: 2px solid rgb(141, 13, 180);
+  display: grid
 }
 
 .collapsible {
@@ -196,12 +288,12 @@ ul li {
 }
 
 
-
-
 #keyboard {
   width: 100%;
   position: relative;
   text-align: center;
+  min-height: 100px;
+  min-width: 300px;
  
 }
 
@@ -326,13 +418,13 @@ border-radius: 8px;
 border-width: 0;
 color: #ffffff;
 cursor: pointer;
-display: inline-block;
+display: flex;
 font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 font-weight: 500;
 line-height: 20px;
 list-style: none;
-margin: 0;
+margin: auto;
 padding: 10px 13px;
 text-align: center;
 transition: all 100ms;
@@ -341,6 +433,7 @@ white-space: nowrap;
 user-select: none;
 -webkit-user-select: none;
 touch-action: manipulation;
+
 }
 
 #error-div {
@@ -353,3 +446,41 @@ touch-action: manipulation;
   size: 12px;
   text-align: center;
 }
+
+.info-text-base {
+  border-radius: 10px;
+  background-color: rgb(41, 41, 41);
+  color: white;
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+.info-text-light {
+  border-radius: 10px;
+  background-color: rgb(220, 220, 220);
+  color: rgb(39, 39, 39);
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+.info-text-maaz {
+  border-radius: 10px;
+  background-color: rgb(69, 243, 95);
+  color: white;
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+.info-text-cameron {
+  border-radius: 10px;
+  background-color: rgb(164, 0, 164);
+  color: white;
+  padding:10px;
+  margin:10px;
+  text-align:center
+}
+
+
