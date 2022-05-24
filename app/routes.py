@@ -1,10 +1,7 @@
-#from ast import Global
-#from pickle import TRUE
 
 from datetime import datetime
 from flask import render_template, url_for
 from app import app
-#from crypt import methods
 from flask import request
 from config import Config
 

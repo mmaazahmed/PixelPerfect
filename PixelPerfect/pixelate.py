@@ -31,7 +31,7 @@ def doStuff(k,i,j,pix):
 def pixel(img,pixel_factors): #@params img= string path to the image , pixel_factor= list of pixelation factors for 5 attempts
     
    
-    path='./app/static/images/images/'
+    path='./'
     img_path= path+img
     im = Image.open(img_path)
     pix = im.load()
@@ -46,8 +46,8 @@ def pixel(img,pixel_factors): #@params img= string path to the image , pixel_fac
                 for j in range(block_col):
                     doStuff(pf,i,j,pix)
         count-=1
-        destination='./app/static/images/'+'tmp/'+str(count)+img[-4:]
+        #destination='./app/static/images/'+'tmp/'+str(count)+img[-4:]
+        destination='./a.png'
         print(destination)
         im.save(destination)
-
 

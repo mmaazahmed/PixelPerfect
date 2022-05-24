@@ -42,6 +42,11 @@ $(window).on('load', () => {
   const light_theme = document.getElementById('light-theme')
   const cameron_theme = document.getElementById('cameron-theme')
   const maaz_theme = document.getElementById('maaz-theme')
+  const date = new Date()
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const joined = [ month, day,year].join('-');
 
   // Code blocks to stop the div from disappearing when clicking in the text field, but to disappear when clicking outside the field.
   share_div.addEventListener("click", function() {
@@ -187,7 +192,7 @@ $(window).on('load', () => {
     else if (guess_correct == false && count < 5) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
       
-      image.src = 'static/images/tmp/' + count + '.png'
+      image.src = 'static/images/'+joined+ '/' + (count+1) + '.png'
     }
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'

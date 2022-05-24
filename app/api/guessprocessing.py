@@ -2,7 +2,6 @@ from app import app
 from flask import jsonify, url_for, request
 from app.api.errors import bad_request,error_response
 import json
-from scripts import pixelate
 
 
 count=1
