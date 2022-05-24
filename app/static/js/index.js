@@ -16,6 +16,14 @@ $(window).on('load', () => {
     });
   }
 
+  var phone_menu = document.querySelector('#myNavbar')
+
+  document.addEventListener('click', function() {
+    console.log('ouch!')
+})
+
+  document.getElementById('rulebutton').click()
+
   // Initialising required constants
   const overlay_div = document.getElementById('overlay')
   const overlay_txt = document.getElementById('overlay-text')
@@ -37,6 +45,9 @@ $(window).on('load', () => {
 
   const stats_div = document.getElementById('stats');
   const stats_txt = document.getElementById('stats-text');
+
+  const leaderboard_div = document.getElementById('leaderboard');
+  const leaderboard_txt = document.getElementById('leaderboard-text');
 
   const base_theme = document.getElementById('base-theme')
   const light_theme = document.getElementById('light-theme')
@@ -89,10 +100,24 @@ $(window).on('load', () => {
     ev.stopPropagation();
   }, false);
 
+  leaderboard_div.addEventListener("click", function() {
+    $('#leaderboard').fadeOut(100);
+  }, false);
+
+  leaderboard_txt.addEventListener("click", function(ev) {
+    ev.stopPropagation();
+  }, false);
+
   const current_theme = document.getElementById('background')
 
   base_theme.addEventListener('click', function() {
     current_theme.className = base_theme.id;
+    $('#main-title').css('color', 'white')
+    $("li").hover(function(){
+      $(this).css("background-color", "yellow");
+      }, function(){
+      $(this).css("background-color", "pink");
+    });
     base_theme.innerHTML = 'Base Theme: Selected!';
     light_theme.innerHTML = 'Light Theme';
     maaz_theme.innerHTML = 'Maaz Theme';
@@ -101,6 +126,7 @@ $(window).on('load', () => {
 
   light_theme.addEventListener('click', function() {
     current_theme.className = light_theme.id;
+    $('#main-title').css('color', 'grey')
     base_theme.innerHTML = 'Base Theme';
     light_theme.innerHTML = 'Light Theme: Selected!';
     maaz_theme.innerHTML = 'Maaz Theme';
@@ -109,6 +135,7 @@ $(window).on('load', () => {
 
   maaz_theme.addEventListener('click', function() {
     current_theme.className = maaz_theme.id;
+    $('#main-title').css('color', 'white')
     base_theme.innerHTML = 'Base Theme';
     light_theme.innerHTML = 'Light Theme';
     maaz_theme.innerHTML = 'Maaz Theme: Selected!';
@@ -118,6 +145,7 @@ $(window).on('load', () => {
 
   cameron_theme.addEventListener('click', function() {
     current_theme.className = cameron_theme.id;
+    $('#main-title').css('color', 'white')
     base_theme.innerHTML = 'Base Theme';
     light_theme.innerHTML = 'Light Theme';
     maaz_theme.innerHTML = 'Maaz Theme';
@@ -259,6 +287,11 @@ function onThemes() {
 function onStats() {
   document.getElementById("stats").className = 'fade-in';
   document.getElementById("stats").style.display = "block";
+}
+
+function onLeaderboard() {
+  document.getElementById("leaderboard").className = 'fade-in';
+  document.getElementById("leaderboard").style.display = "block";
 }
 
 // Code to create countdown timer for each new day - Will add functionality of updating fields in the future.
