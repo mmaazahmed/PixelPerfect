@@ -112,8 +112,13 @@ $(window).on('load', () => {
 
   base_theme.addEventListener('click', function() {
     current_theme.className = base_theme.id;
+    base_theme.innerHTML = 'Base Theme: Selected!';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
     $("li").hover(function(){
+      $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(39,39,39)");
       $(this).css("border-radius", "10px");
       }, function(){
@@ -126,28 +131,30 @@ $(window).on('load', () => {
     themes_txt.className = 'base';
     outcome_txt.className = 'base';
     share_txt.className = 'base';
-    let info_txt2 = document.getElementsByClassName('info-text-light')
-    let info_txt3 = document.getElementsByClassName('info-text-maaz')
-    let info_txt4 = document.getElementsByClassName('info-text-cameron')
+    let info_txt2 = document.getElementsByClassName('info-text-light');
+    let info_txt3 = document.getElementsByClassName('info-text-maaz');
+    let info_txt4 = document.getElementsByClassName('info-text-cameron');
     for (i in info_txt2) {
       info_txt2[i].className = 'info-text-base'
-    }
+    };
     for (i in info_txt3) {
       info_txt3[i].className = 'info-text-base'
-    }
+    };
     for (i in info_txt4) {
       info_txt4[i].className = 'info-text-base'
-    }
-    base_theme.innerHTML = 'Base Theme: Selected!';
-    light_theme.innerHTML = 'Light Theme';
-    maaz_theme.innerHTML = 'Maaz Theme';
-    cameron_theme.innerHTML = 'Cameron Theme';
+    };
+    
   });
 
   light_theme.addEventListener('click', function() {
     current_theme.className = light_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme: Selected!';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'grey');
     $("li").hover(function(){
+    $(this).css('transition', 'background 0.1s');
     $(this).css("background", "rgb(200,200,200)");
     $(this).css("border-radius", "10px");
     }, function(){
@@ -160,28 +167,29 @@ $(window).on('load', () => {
     themes_txt.className = 'light';
     outcome_txt.className = 'light';
     share_txt.className = 'light';
-    let info_txt1 = document.getElementsByClassName('info-text-base')
-    let info_txt3 = document.getElementsByClassName('info-text-maaz')
-    let info_txt4 = document.getElementsByClassName('info-text-cameron')
+    let info_txt1 = document.getElementsByClassName('info-text-base');
+    let info_txt3 = document.getElementsByClassName('info-text-maaz');
+    let info_txt4 = document.getElementsByClassName('info-text-cameron');
     for (i in info_txt1) {
       info_txt1[i].className = 'info-text-light'
-    }
+    };
     for (i in info_txt3) {
       info_txt3[i].className = 'info-text-light'
-    }
+    };
     for (i in info_txt4) {
       info_txt4[i].className = 'info-text-light'
-    }
-    base_theme.innerHTML = 'Base Theme';
-    light_theme.innerHTML = 'Light Theme: Selected!';
-    maaz_theme.innerHTML = 'Maaz Theme';
-    cameron_theme.innerHTML = 'Cameron Theme';
+    };
   });
 
   maaz_theme.addEventListener('click', function() {
     current_theme.className = maaz_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme: Selected!';
+    cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
     $("li").hover(function(){
+      $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(1,130,40)");
       $(this).css("border-radius", "10px");
       }, function(){
@@ -194,27 +202,27 @@ $(window).on('load', () => {
     themes_txt.className = 'maaz';
     outcome_txt.className = 'maaz';
     share_txt.className = 'maaz';
-    let info_txt1 = document.getElementsByClassName('info-text-base')
-    let info_txt2 = document.getElementsByClassName('info-text-light')
-    let info_txt4 = document.getElementsByClassName('info-text-cameron')
+    let info_txt1 = document.getElementsByClassName('info-text-base');
+    let info_txt2 = document.getElementsByClassName('info-text-light');
+    let info_txt4 = document.getElementsByClassName('info-text-cameron');
     for (i in info_txt1) {
       info_txt1[i].className = 'info-text-maaz'
-    }
+    };
     for (i in info_txt2) {
       info_txt2[i].className = 'info-text-maaz'
-    }
+    };
     for (i in info_txt4) {
       info_txt4[i].className = 'info-text-maaz'
-    }
-    base_theme.innerHTML = 'Base Theme';
-    light_theme.innerHTML = 'Light Theme';
-    maaz_theme.innerHTML = 'Maaz Theme: Selected!';
-    cameron_theme.innerHTML = 'Cameron Theme';
+    };
 
   });
 
   cameron_theme.addEventListener('click', function() {
     current_theme.className = cameron_theme.id;
+    base_theme.innerHTML = 'Base Theme';
+    light_theme.innerHTML = 'Light Theme';
+    maaz_theme.innerHTML = 'Maaz Theme';
+    cameron_theme.innerHTML = 'Cameron Theme: Selected!';
     $('#main-title').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s')
@@ -230,26 +238,22 @@ $(window).on('load', () => {
     themes_txt.className = 'cameron';
     outcome_txt.className = 'cameron';
     share_txt.className = 'cameron';
-    let info_txt1 = document.getElementsByClassName('info-text-base')
-    let info_txt2 = document.getElementsByClassName('info-text-light')
-    let info_txt3 = document.getElementsByClassName('info-text-maaz')
-    let info_txt4 = document.getElementsByClassName('info-text-cameron')
+    let info_txt1 = document.getElementsByClassName('info-text-base');
+    let info_txt2 = document.getElementsByClassName('info-text-light');
+    let info_txt3 = document.getElementsByClassName('info-text-maaz');
+    let info_txt4 = document.getElementsByClassName('info-text-cameron');
     for (i in info_txt1) {
       info_txt1[i].className = 'info-text-cameron'
-    }
+    };
     for (i in info_txt2) {
       info_txt2[i].className = 'info-text-cameron'
-    }
+    };
     for (i in info_txt3) {
       info_txt3[i].className = 'info-text-cameron'
-    }
+    };
     for (i in info_txt4) {
       info_txt4[i].className = 'info-text-cameron'
-    }
-    base_theme.innerHTML = 'Base Theme';
-    light_theme.innerHTML = 'Light Theme';
-    maaz_theme.innerHTML = 'Maaz Theme';
-    cameron_theme.innerHTML = 'Cameron Theme: Selected!';
+    };
   });
 
 

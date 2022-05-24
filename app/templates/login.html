@@ -26,85 +26,261 @@
     <!-- Function to display rules when clicking the settings button -->
     <!-- <script src = "{{url_for('static',filename = 'js/base.js')}}" ></script> -->
     <script src = "{{url_for('static',filename = 'js/login.js')}}" ></script>
+
+    <style>
+      .login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+  .form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+  .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #3f3f3f;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  .form button:hover,.form button:active,.form button:focus {
+    background: #767676;
+  }
+  .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  .form .message a {
+    color: #393939;
+    text-decoration: none;
+  }
+  .form .register-form {
+    display: none;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .container:before, .container:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+  .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+  .container .info span a {
+    color: #000000;
+    text-decoration: none;
+  }
+  .container .info span .fa {
+    color: #EF3B3A;
+  }
+    </style>
     
     <title>Pixel Perfect</title>
 
 </head>
 <body id = 'background' class = 'base-theme'>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"></a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
-              <li onclick = 'onRules()'><a><span class="glyphicon glyphicon-question-sign"></span> Rules</a></li>
-              <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span> Thanks!</a></li>
-              <li onclick = 'onThemes()'><a href="#"><span class="glyphicon glyphicon-pencil"></span> Themes</a></li>
-            </ul>
-            <ul class = 'nav navbar-nav pull-right'>
-                <li class = 'nav navbar-nav pull-right'><a href="index"><span class="glyphicon glyphicon-camera"></span> Play Game</a></li>
-            </ul>
-            
-          </div>
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id = 'hamburger'>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
+        <li onclick = 'onRules()'><a id = 'rulebutton'><span class="glyphicon glyphicon-question-sign"></span> Rules</a></li>
+        <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span> Thanks!</a></li>
+        <li onclick = 'onThemes()'><a href="#"><span class="glyphicon glyphicon-pencil"></span> Themes</a></li>
+      </ul>
+      <ul class = 'nav navbar-nav pull-right'>
+        <li><a href="index"><span class="glyphicon glyphicon-camera"></span> Play Game</a></li>
+        <li><a onclick = 'onStats()'><span class="glyphicon glyphicon-dashboard"></span> Stats</a></li>
+        <li><a onclick = 'onLeaderboard()'><span class="glyphicon glyphicon-stats"></span> Leaderboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Information Div - Where the rules of the game will be explained. -->
+  <div id = 'overlay' class = 'overlay-panel'>
+  <div id = 'overlay-text' class = 'base'>
+    <h1 class = 'title' style = 'margin: auto;'>Rules</h1>
+    <br>
+    <h2 class = 'subtitle'>Welcome to Pixel Perfect!</h2>
+    <div class = 'info-text-base'>
+      <p>You will be given a very blurry image. Try to guess what it is!</p>
+      <p>If you can't get it, not to worry! </p>
+      <p>For every incorrect answer, the photo will become less blurry.</p>
+      <p>A new photo will be shown every day.</p>
+      <p>This website was made for the CITS3403 Project by Sean, Maaz, Pablo and Cameron.</p>
+    </div>
+  </div>
+  </div>
+
+  <!-- Share div - Where we will be able to provide sharable content -->
+  <div id = 'share' class = 'overlay-panel'>
+  <div id = 'share-text' class = 'base'>
+    <h1 class = 'title' style = 'margin: auto;'>Share</h1>
+    <br>
+    <div class = 'info-text-base'>
+      <p>Thank you for playing our game!</p>
+      <p>To share your score, tap enter or 'submit' and tap the share button in the overlay.</p>
+      <p>To share the website, click the button below.</p>
+      <p><button id="share-website" class = 'press-button'>Share</button></p>
+    </div>
+  </div>
+  </div>
+
+  <!-- Thanks div - explain the context behind the game blah blah -->
+  <div id = 'thanks' class = 'overlay-panel'>
+  <div id = 'thanks-text' class = 'base'>
+    <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
+    <br>
+    <div class = 'info-text-base'>
+      <p>Thank you for playing our game!</p>
+      <p>This game was made for CITS3403 Project 1</p>
+      <p>Please enjoy playing the game.</p>
+      <p>We appreciate any constructive feedback you may have.</p>
+    </div>
+  </div>
+  </div>
+
+  <!-- Outcome Div - Display when the player wins! (or loses) - needs to change based on outcome of game -->
+  <div id = 'outcome' class = 'overlay-panel'>
+      <div id = 'outcome-text' class = 'base'>
+        <h1 class = 'title' id = 'outcome-title' style = 'margin: auto;'>You Win/Lose!</h1>
+        <br>
+        <p id = 'outcome-eval'>You got the correct answer in <span id = 'guess-count'>x</span> guesses!</p>
+        <br>
+        <p>Time until next picture: <span id = 'countdown-timer'>_____</span></p>
+        <p><button id="share-button" class = 'press-button'>Share</button></p>
+        <br>
+      
+        <h1 class = 'title'>Stats</h1>
+        <br>
+        <h2 class = 'subtitle'>Current Streak: <span id = 'current_streak' class = 'subtitle'>x</span></h2> <!--Put current streak in this span-->
+        <br>
+        <h2 class = 'subtitle'>Best Streak: <span id = 'best_streak' class = 'subtitle'>x</span></h2> <!--Put best streak in this span-->
+        <br>
+        <h2 class = 'subtitle'>Guess Breakdown: </h2>
+        <div id = 'guess_breakdown'>
+          Put info on number of times taken for each guess here.
         </div>
-      </nav> 
-    
-    <!-- Information Div - Where the rules of the game will be explained. -->
-    <div id = 'overlay' class = 'overlay-div'>
-      <div id = 'overlay-text'>
-        <h1 class = 'title' style = 'margin: auto;'>Rules</h1>
-        <br>
-        <p>You have 5 attempts to guess the content of the photo.</p>
-        <p>For every wrong guess you make, the photo will become less blurry!</p>
-        <p>This game was made for CITS3401 project 1.</p>
-        <p>Click anywhere to return to the main page.</p>
-      </div>
-    </div>
-
-    <!-- Share div -->
-    <div id = 'share'>
-        <div id = 'share-text'>
-          <h1 class = 'title' style = 'margin: auto;'>Share</h1>
-          <br>
-          <p>Thank you for playing our game!</p>
-          <p>To share your score, press enter in the input field (or submit on the keyboard).</p>
-          <p>To share the website, click the button below.</p>
-          <p></p>
-          <p><button id="share-site" class = 'press-button'>Share</button></p>
-        </div>
       </div>
 
-    <!-- Thanks div - explain the context behind the game blah blah -->
-    <div id = 'thanks' class = 'overlay-div'>
-      <div id = 'thanks-text'>
-        <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
-        <br>
-        <p>Thank you for playing our game!</p>
-        <p>This game was made for CITS3403 Project 1</p>
-        <p>Please enjoy playing the game.</p>
-        <p>We appreciate any constructive feedback you may have.</p>
-      </div>
-    </div>
 
-    <!-- Thanks div - explain the context behind the game blah blah -->
-    <div id = 'themes' class = 'overlay-div'>
-      <div id = 'themes-text'>
-        <h1 class = 'title' style = 'margin: auto;'>Themes</h1>
-        <br>
-        <p>Select from a couple of themes!</p>
-        <p>Made by different members of the team.</p>
-        <p><button id = 'base-theme' class = 'press-button'>Base Theme</button></p>
-        <p><button id = 'maaz-theme' class = 'press-button'>Maaz Theme</button></p>
-        <p><button id = 'cameron-theme' class = 'press-button'>Cameron Theme</button></p>
-      </div>
+  </div>
+
+  <!-- Thanks div - explain the context behind the game blah blah -->
+  <div id = 'thanks' class = 'overlay-panel'>
+  <div id = 'thanks-text' class = 'base'>
+    <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
+    <br>
+    <div class = 'info-text-base'>
+      <p>Thank you for playing our game!</p>
+      <p>This game was made for CITS3403 Project 1</p>
+      <p>Please enjoy playing the game.</p>
+      <p>We appreciate any constructive feedback you may have.</p>
     </div>
+  </div>
+  </div>
+
+  <!-- Themes div - Add your themes! -->
+  <div id = 'themes' class = 'overlay-panel'>
+  <div id = 'themes-text' class = 'base'>
+    <h1 class = 'title' style = 'margin: auto;'>Themes</h1>
+    <br>
+    <p>Select from a couple of themes!</p>
+    <p>Made by different members of the team.</p>
+    <p><button id = 'base-theme' class = 'press-button'>Base Theme</button></p>
+    <p><button id = 'light-theme' class = 'press-button'>Light Theme</button></p>
+    <p><button id = 'maaz-theme' class = 'press-button'>Maaz Theme</button></p>
+    <p><button id = 'cameron-theme' class = 'press-button'>Cameron Theme</button></p>
+  </div>
+  </div>
+
+  <!-- Stats div - Where all the stats are ez money -->
+  <div id = 'stats' class = 'overlay-panel'>
+  <div id = 'stats-text' class = 'base'>
+    <h1 class = 'title' style = 'margin: auto;'>Stats</h1>
+    <br>
+    <h2 class = 'subtitle'>Current Streak: </h2><br>
+    <div id = 'current-streak'>
+      <!-- Put current streak stuff here -->
+    </div>
+    <h2 class = 'subtitle'>Best Streak: </h2><br>
+    <div id = 'best-streak'>
+      <!-- Put current streak here -->
+    </div>
+    <!-- Put best streak here -->
+    <h2 class = 'subtitle'>Guess Breakdown: </h2><br>
+    <div id = 'guess-breakdown'>
+      <!-- Put guess breakdown here -->
+    </div>
+  </div>
+  </div>
+
+  <!-- Leaderboard div - Where all the stats are ez money -->
+  <div id = 'leaderboard' class = 'overlay-panel'>
+  <div id = 'leaderboard-text' class = 'base'>
+    <h1 class = 'title'> Leaderboard </h1>
+    <div id = 'top-5' class = 'leaderboard-display'>
+      <h2 class = 'subtitle'>
+        Top 5 Global
+      </h2>
+      <p id = 'player1'>Player 1: </p>
+      <p id = 'player2'>Player 2: </p>
+      <p id = 'player3'>Player 3: </p>
+      <p id = 'player4'>Player 4: </p>
+      <p id = 'player5'>Player 5: </p>
+      <p id = 'current-player'>Your score: </p>
+    </div>
+  </div>
+  </div>
 
     <!-- Title div -->
     <div class = 'container-fluid'>
