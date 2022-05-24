@@ -69,11 +69,6 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
-class ImageTable(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    imagepath = db.Column(db.String, unique=True, nullable=False)
-    answer = db.Column(db.String, unique=True, nullable=False)
-    # mimetypes = db.Column(db.Text, nullable=False)
 
 
 class Player_History(db.Model): #Stores every session for a player
@@ -85,22 +80,13 @@ class Player_History(db.Model): #Stores every session for a player
     date_submitted = db.Column(db.DateTime, nullable=True)
 
 
-
-
 class ImageTable(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    imagepath = db.Column(db.String, unique=True, nullable=False)
+    imageName = db.Column(db.String, unique=True, nullable=False)
     answer = db.Column(db.String, unique=True, nullable=False)
     # mimetypes = db.Column(db.Text, nullable=False)
 
-
-class Player_History(db.Model): #Stores every session for a player
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, nullable=False) #use Username to return results for that username
-    answer_history = db.Column(db.String, unique=True, nullable=False) #Have Large Sequence
-    answer_count = db.Column(db.Integer, nullable=False)
-    img_id = db.Column(db.Integer, nullable=False)
-    date_submitted = (db.DateTime)
+# class DateTable(db.Model):
 
 
 #Insert some basic images into  
@@ -175,6 +161,7 @@ def Dump():
 
 # Dump()
 
+
 #Cannot Access Dashboard without login
 @app.route('/dashboard')
 @login_required
@@ -192,8 +179,8 @@ def dash():
 # picfolder = os.path.join('static','images')
 # print(picfolder)
 
-app.config['UPLOAD_FOLDER'] = '/home/seand/Documents/gitrepo/CITS3403-Project/flasklogin/static/images'
-
+app.config['UPLOAD_FOLDER'] = os.getcwd()+"/static/images"
+    
 
 # # Insert One Row
 # IMG_PATH = "/images/Colosseum.jpg"
@@ -235,7 +222,6 @@ def index():
     # return render_template('index.html', )
     
     #After Game over do something
-
 
 @app.route('/logout')
 @login_required
