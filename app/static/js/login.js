@@ -76,7 +76,10 @@ $(window).on('load', () => {
     ev.stopPropagation();
   }, false);
 
-  const current_theme = document.getElementById('background')
+  const current_theme = document.getElementById('background');
+  const share_infotxt = document.getElementById('share-infotxt')
+  const rules_infotxt = document.getElementById('rules-infotxt')
+  const thanks_infotxt = document.getElementById('thanks-infotxt')
 
   base_theme.addEventListener('click', function() {
     current_theme.className = base_theme.id;
@@ -98,18 +101,9 @@ $(window).on('load', () => {
     stats_txt.className = 'base';
     themes_txt.className = 'base';
     share_txt.className = 'base';
-    let info_txt2 = document.getElementsByClassName('info-text-light');
-    let info_txt3 = document.getElementsByClassName('info-text-maaz');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt2) {
-      info_txt2[i].className = 'info-text-base'
-    };
-    for (i in info_txt3) {
-      info_txt3[i].className = 'info-text-base'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-base'
-    };
+    share_infotxt.className = 'info-text-base'
+    rules_infotxt.className = 'info-text-base'
+    thanks_infotxt.className = 'info-text-base'
     
   });
 
@@ -133,18 +127,9 @@ $(window).on('load', () => {
     stats_txt.className = 'light';
     themes_txt.className = 'light';
     share_txt.className = 'light';
-    let info_txt1 = document.getElementsByClassName('info-text-base');
-    let info_txt3 = document.getElementsByClassName('info-text-maaz');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt1) {
-      info_txt1[i].className = 'info-text-light'
-    };
-    for (i in info_txt3) {
-      info_txt3[i].className = 'info-text-light'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-light'
-    };
+    share_infotxt.className = 'info-text-light'
+    rules_infotxt.className = 'info-text-light'
+    thanks_infotxt.className = 'info-text-light'
   });
 
   maaz_theme.addEventListener('click', function() {
@@ -167,18 +152,9 @@ $(window).on('load', () => {
     stats_txt.className = 'maaz';
     themes_txt.className = 'maaz';
     share_txt.className = 'maaz';
-    let info_txt1 = document.getElementsByClassName('info-text-base');
-    let info_txt2 = document.getElementsByClassName('info-text-light');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt1) {
-      info_txt1[i].className = 'info-text-maaz'
-    };
-    for (i in info_txt2) {
-      info_txt2[i].className = 'info-text-maaz'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-maaz'
-    };
+    share_infotxt.className = 'info-text-maaz'
+    rules_infotxt.className = 'info-text-maaz'
+    thanks_infotxt.className = 'info-text-maaz'
 
   });
 
@@ -202,22 +178,9 @@ $(window).on('load', () => {
     stats_txt.className = 'cameron';
     themes_txt.className = 'cameron';
     share_txt.className = 'cameron';
-    let info_txt1 = document.getElementsByClassName('info-text-base');
-    let info_txt2 = document.getElementsByClassName('info-text-light');
-    let info_txt3 = document.getElementsByClassName('info-text-maaz');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt1) {
-      info_txt1[i].className = 'info-text-cameron'
-    };
-    for (i in info_txt2) {
-      info_txt2[i].className = 'info-text-cameron'
-    };
-    for (i in info_txt3) {
-      info_txt3[i].className = 'info-text-cameron'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-cameron'
-    };
+    share_infotxt.className = 'info-text-cameron'
+    rules_infotxt.className = 'info-text-cameron'
+    thanks_infotxt.className = 'info-text-cameron'
   });
 
 

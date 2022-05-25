@@ -16,12 +16,6 @@ $(window).on('load', () => {
     });
   }
 
-  var phone_menu = document.querySelector('#myNavbar')
-
-  document.addEventListener('click', function() {
-    console.log('ouch!')
-})
-
   document.getElementById('rulebutton').click()
 
   // Initialising required constants
@@ -113,6 +107,10 @@ $(window).on('load', () => {
     ev.stopPropagation();
   }, false);
 
+  const share_infotxt = document.getElementById('share-infotxt')
+  const rules_infotxt = document.getElementById('rules-infotxt')
+  const thanks_infotxt = document.getElementById('thanks-infotxt')
+
   const current_theme = document.getElementById('background')
 
   base_theme.addEventListener('click', function() {
@@ -138,18 +136,10 @@ $(window).on('load', () => {
     themes_txt.className = 'base';
     outcome_txt.className = 'base';
     share_txt.className = 'base';
-    let info_txt2 = document.getElementsByClassName('info-text-light');
-    let info_txt3 = document.getElementsByClassName('info-text-maaz');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt2) {
-      info_txt2[i].className = 'info-text-base'
-    };
-    for (i in info_txt3) {
-      info_txt3[i].className = 'info-text-base'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-base'
-    };
+    share_infotxt.className = 'info-text-base';
+    rules_infotxt.className = 'info-text-base';
+    thanks_infotxt.className = 'info-text-base';
+
     
   });
 
@@ -176,18 +166,9 @@ $(window).on('load', () => {
     themes_txt.className = 'light';
     outcome_txt.className = 'light';
     share_txt.className = 'light';
-    let info_txt1 = document.getElementsByClassName('info-text-base');
-    let info_txt3 = document.getElementsByClassName('info-text-maaz');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt1) {
-      info_txt1[i].className = 'info-text-light'
-    };
-    for (i in info_txt3) {
-      info_txt3[i].className = 'info-text-light'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-light'
-    };
+    share_infotxt.className = 'info-text-light';
+    rules_infotxt.className = 'info-text-light';
+    thanks_infotxt.className = 'info-text-light';
   });
 
   maaz_theme.addEventListener('click', function() {
@@ -213,18 +194,9 @@ $(window).on('load', () => {
     themes_txt.className = 'maaz';
     outcome_txt.className = 'maaz';
     share_txt.className = 'maaz';
-    let info_txt1 = document.getElementsByClassName('info-text-base');
-    let info_txt2 = document.getElementsByClassName('info-text-light');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt1) {
-      info_txt1[i].className = 'info-text-maaz'
-    };
-    for (i in info_txt2) {
-      info_txt2[i].className = 'info-text-maaz'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-maaz'
-    };
+    share_infotxt.className = 'info-text-maaz';
+    rules_infotxt.className = 'info-text-maaz';
+    thanks_infotxt.className = 'info-text-maaz';
 
   });
 
@@ -238,7 +210,7 @@ $(window).on('load', () => {
     $('.title').css('color', 'white');
     $('.subtitle').css('color', 'white');
     $("li").hover(function(){
-      $(this).css('transition', 'background 0.1s')
+      $(this).css('transition', 'background 0.1s');
       $(this).css("background", "linear-gradient(47deg, rgba(238,0,255,1) 0%, rgba(126,0,255,1) 100%)");
       $(this).css("border-radius", "10px");
       }, function(){
@@ -251,22 +223,9 @@ $(window).on('load', () => {
     themes_txt.className = 'cameron';
     outcome_txt.className = 'cameron';
     share_txt.className = 'cameron';
-    let info_txt1 = document.getElementsByClassName('info-text-base');
-    let info_txt2 = document.getElementsByClassName('info-text-light');
-    let info_txt3 = document.getElementsByClassName('info-text-maaz');
-    let info_txt4 = document.getElementsByClassName('info-text-cameron');
-    for (i in info_txt1) {
-      info_txt1[i].className = 'info-text-cameron'
-    };
-    for (i in info_txt2) {
-      info_txt2[i].className = 'info-text-cameron'
-    };
-    for (i in info_txt3) {
-      info_txt3[i].className = 'info-text-cameron'
-    };
-    for (i in info_txt4) {
-      info_txt4[i].className = 'info-text-cameron'
-    };
+    share_infotxt.className = 'info-text-cameron';
+    rules_infotxt.className = 'info-text-cameron';
+    thanks_infotxt.className = 'info-text-cameron';
   });
 
 
@@ -275,7 +234,7 @@ $(window).on('load', () => {
 
   var guess_copyandpaste = 'Play Pixel Perfect: A Game by Sean, Maaz, Pablo and Cameron: \n'
 
-  let correct_answer;
+  
   let image = document.getElementsByClassName('test')[0]
 
   $.ajax('/api/correctanswer', {
@@ -289,6 +248,15 @@ $(window).on('load', () => {
   })
 
   function submit() {
+    var childs = document.getElementById('guess-content').lastChild;
+    console.log(childs.className);
+
+    if (childs.className === 'correct-guess') {
+      console.log('hahah you got it already chill')
+      return NaN
+    }
+
+    
     let count = document.getElementById('guess-content').children.length + 1;
     if (count >= 6) {
       console.log('nice try!')
@@ -319,32 +287,32 @@ $(window).on('load', () => {
       success: function(data) {
         correctness = data
       }
-    })
+    });
     console.log(correctness.correct);
-    $('#error-div').css('visibility', 'hidden')
-    guess_correct = Boolean(correctness.correct == 'correct')
-    console.log(guess_correct)
+    $('#error-div').css('visibility', 'hidden');
+    guess_correct = Boolean(correctness.correct == 'correct');
+    console.log(guess_correct);
     if (guess_correct) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': CORRECT! 😁' + '\n'
       guess_copyandpaste = guess_copyandpaste + String(window.location.href)
       onOutcome(true, count, correct_answer)
     }
     else if (guess_correct == false && count < 5) {
-      guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
+      guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n';
       
-      image.src = 'static/images/'+joined+ '/' + (count+1) + '.png'
+      image.src = 'static/images/'+joined+ '/' + (count+1) + '.png';
     }
     else {
-      guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n'
-      guess_copyandpaste = guess_copyandpaste + String(window.location.href)
-      onOutcome(false, count, correct_answer)
-    }
+      guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n';
+      guess_copyandpaste = guess_copyandpaste + String(window.location.href);
+      onOutcome(false, count, correct_answer);
+    };
 
     if (guess_correct) {
-    $("<div style = 'transition: display 0.1s; 'id = 'guess" + String(count) + "' ><p class = 'guess' style = 'color: green;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
+    $("<div style = 'transition: display 0.1s; 'class = 'correct-guess'><p id = 'correct_guess' class = 'guess' style = 'color: green;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
     $(guess).val('')
   } else {
-    $("<div style = 'transition: display 0.1s; 'id = 'guess" + String(count) + "' ><p class = 'guess' style = 'color: red;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
+    $("<div style = 'transition: display 0.1s; 'class = 'guess" + String(count) + "' ><p id = 'incorrect_guess' class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
     $(guess).val('')
   }};
 
