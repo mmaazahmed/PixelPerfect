@@ -19,8 +19,11 @@
     <link rel = 'stylesheet' href = "{{ url_for('static',filename='styles/base.css' ) }}">
 
     <!-- Access to Google Fonts - used for the title -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <link href="https://fonts.googleapis.com/css2?family=Smooch&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet"> 
 
     <!-- Function to display rules when clicking the settings button -->
     <script src = "{{url_for('static',filename = 'js/index.js')}}"></script>
@@ -59,7 +62,7 @@
         <h1 class = 'title' style = 'margin: auto;'>Rules</h1>
         <br>
         <h2 class = 'subtitle'>Welcome to Pixel Perfect!</h2>
-        <div class = 'info-text-base'>
+        <div id = 'rules-infotxt' class = 'info-text-base'>
           <p>You will be given a very blurry image. Try to guess what it is!</p>
           <p>If you can't get it, not to worry! </p>
           <p>For every incorrect answer, the photo will become less blurry.</p>
@@ -74,7 +77,7 @@
       <div id = 'share-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Share</h1>
         <br>
-        <div class = 'info-text-base'>
+        <div id = 'share-infotxt' class = 'info-text-base'>
           <p>Thank you for playing our game!</p>
           <p>To share your score, tap enter or 'submit' and tap the share button in the overlay.</p>
           <p>To share the website, click the button below.</p>
@@ -88,7 +91,7 @@
       <div id = 'thanks-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
         <br>
-        <div class = 'info-text-base'>
+        <div id = 'thanks-infotxt' class = 'info-text-base'>
           <p>Thank you for playing our game!</p>
           <p>This game was made for CITS3403 Project 1</p>
           <p>Please enjoy playing the game.</p>
@@ -123,27 +126,12 @@
 
     </div>
 
-    <!-- Thanks div - explain the context behind the game blah blah -->
-    <div id = 'thanks' class = 'overlay-panel'>
-      <div id = 'thanks-text' class = 'base'>
-        <h1 class = 'title' style = 'margin: auto;'>Thank you!</h1>
-        <br>
-        <div class = 'info-text-base'>
-          <p>Thank you for playing our game!</p>
-          <p>This game was made for CITS3403 Project 1</p>
-          <p>Please enjoy playing the game.</p>
-          <p>We appreciate any constructive feedback you may have.</p>
-        </div>
-      </div>
-    </div>
-
     <!-- Themes div - Add your themes! -->
     <div id = 'themes' class = 'overlay-panel'>
       <div id = 'themes-text' class = 'base'>
         <h1 class = 'title' style = 'margin: auto;'>Themes</h1>
-        <br>
-        <p>Select from a couple of themes!</p>
-        <p>Made by different members of the team.</p>
+        <p style = 'text-align: center;'>Select from a couple of themes!</p>
+        <p style = 'text-align: center;'>Made by different members of the team.</p>
         <p><button id = 'base-theme' class = 'press-button'>Base Theme</button></p>
         <p><button id = 'light-theme' class = 'press-button'>Light Theme</button></p>
         <p><button id = 'maaz-theme' class = 'press-button'>Maaz Theme</button></p>
