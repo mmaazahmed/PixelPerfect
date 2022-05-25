@@ -199,7 +199,8 @@ ul li {
 #themes-text.cameron, 
 #stats-text.cameron, 
 #leaderboard-text.cameron{
-  background-color: rgb(40, 6, 50);
+  background: rgb(241, 187, 246);
+  background: linear-gradient(243deg, rgba(250,173,255,1) 0%, rgba(211,168,255,1) 100%);
   padding: 10px;
   position: absolute;
   top: 50%;
@@ -413,13 +414,13 @@ text-align: left;
 }
 
 .press-button {
-background-color: rgba(218, 36, 164, 0.701);
+background-color: rgb(100, 100, 100);
 border-radius: 8px;
 border-width: 0;
 color: #ffffff;
 cursor: pointer;
 display: flex;
-font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-family: "Odibee Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 font-weight: 500;
 line-height: 20px;
@@ -476,7 +477,8 @@ touch-action: manipulation;
 
 .info-text-cameron {
   border-radius: 10px;
-  background-color: rgb(164, 0, 164);
+  background: rgb(207,19,255);
+  background: linear-gradient(45deg, rgba(207,19,255,1) 0%, rgba(239,30,255,1) 100%);
   color: white;
   padding:10px;
   margin:10px;
