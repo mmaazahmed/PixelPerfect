@@ -11,7 +11,7 @@ $(window).on('load', () => {
       if (content.style.maxHeight) {
         content.style.maxHeight = null;
       } else {
-        content.style.maxHeight = content.scrollHeight + "px";
+        content.style.maxHeight = "300px";
       }
     });
   }
@@ -122,6 +122,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
+    $('.title').css('color', 'white');
+    $('.subtitle').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(39,39,39)");
@@ -158,6 +160,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'grey');
+    $('.title').css('color', 'grey');
+    $('.subtitle').css('color', 'grey');
     $("li").hover(function(){
     $(this).css('transition', 'background 0.1s');
     $(this).css("background", "rgb(200,200,200)");
@@ -193,6 +197,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme: Selected!';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
+    $('.title').css('color', 'white');
+    $('.subtitle').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(1,130,40)");
@@ -229,6 +235,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme: Selected!';
     $('#main-title').css('color', 'white');
+    $('.title').css('color', 'white');
+    $('.subtitle').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s')
       $(this).css("background", "linear-gradient(47deg, rgba(238,0,255,1) 0%, rgba(126,0,255,1) 100%)");
@@ -331,15 +339,20 @@ $(window).on('load', () => {
       guess_copyandpaste = guess_copyandpaste + String(window.location.href)
       onOutcome(false, count, correct_answer)
     }
-    $('#guess-content').append("<p class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p>")
+
+    if (guess_correct) {
+    $("<div style = 'transition: display 0.1s; 'id = 'guess" + String(count) + "' ><p class = 'guess' style = 'color: green;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
     $(guess).val('')
-  }
+  } else {
+    $("<div style = 'transition: display 0.1s; 'id = 'guess" + String(count) + "' ><p class = 'guess' style = 'color: red;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
+    $(guess).val('')
+  }};
 
 
   guess.addEventListener("keypress", function(e) {
     if (e.key === 'Enter') {
       submit();
-    }
+    };
   })
   let submitKey = document.getElementsByClassName('longerKeyboardKey')[0];
   submitKey.onclick = submit;
