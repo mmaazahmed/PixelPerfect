@@ -122,6 +122,8 @@ $(window).on('load', () => {
     $('#main-title').css('color', 'white');
     $('.title').css('color', 'white');
     $('.subtitle').css('color', 'white');
+    $('.press-button').css('background-color', 'rgb(100, 100, 100)');
+    $('.press-button').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(39,39,39)");
@@ -152,6 +154,8 @@ $(window).on('load', () => {
     $('#main-title').css('color', 'grey');
     $('.title').css('color', 'grey');
     $('.subtitle').css('color', 'grey');
+    $('.press-button').css('background-color', 'rgb(230, 230, 230)');
+    $('.press-button').css('color', 'rgb(39,39,39)');
     $("li").hover(function(){
     $(this).css('transition', 'background 0.1s');
     $(this).css("background", "rgb(200,200,200)");
@@ -180,6 +184,8 @@ $(window).on('load', () => {
     $('#main-title').css('color', 'white');
     $('.title').css('color', 'white');
     $('.subtitle').css('color', 'white');
+    $('.press-button').css('background-color', 'rgb(6, 170, 0)');
+    $('.press-button').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(1,130,40)");
@@ -209,6 +215,8 @@ $(window).on('load', () => {
     $('#main-title').css('color', 'white');
     $('.title').css('color', 'white');
     $('.subtitle').css('color', 'white');
+    $('.press-button').css('background-color', 'rgb(120, 0, 122)');
+    $('.press-button').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "linear-gradient(47deg, rgba(238,0,255,1) 0%, rgba(126,0,255,1) 100%)");

@@ -88,6 +88,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
+    $('.press-button').css('background-color', 'rgb(100, 100, 100)');
+    $('.press-button').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(39,39,39)");
@@ -101,9 +103,16 @@ $(window).on('load', () => {
     stats_txt.className = 'base';
     themes_txt.className = 'base';
     share_txt.className = 'base';
-    share_infotxt.className = 'info-text-base'
-    rules_infotxt.className = 'info-text-base'
-    thanks_infotxt.className = 'info-text-base'
+    share_infotxt.className = 'info-text-base';
+    rules_infotxt.className = 'info-text-base';
+    thanks_infotxt.className = 'info-text-base';
+    $('.form button').css('background', '#3f3f3f');
+    $(".form button").hover(function(){
+      $(this).css("background", "#767676");
+      }, function(){
+      $(this).css("background", "#3f3f3f");
+      });
+    $('.form .message a').css('color', '#393939');
     
   });
 
@@ -114,6 +123,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'grey');
+    $('.press-button').css('background-color', 'rgb(230, 230, 230)');
+    $('.press-button').css('color', 'rgb(39,39,39)');
     $("li").hover(function(){
     $(this).css('transition', 'background 0.1s');
     $(this).css("background", "rgb(200,200,200)");
@@ -127,9 +138,16 @@ $(window).on('load', () => {
     stats_txt.className = 'light';
     themes_txt.className = 'light';
     share_txt.className = 'light';
-    share_infotxt.className = 'info-text-light'
-    rules_infotxt.className = 'info-text-light'
-    thanks_infotxt.className = 'info-text-light'
+    share_infotxt.className = 'info-text-light';
+    rules_infotxt.className = 'info-text-light';
+    thanks_infotxt.className = 'info-text-light';
+    $('.form button').css('background', '#3f3f3f');
+    $(".form button").hover(function(){
+      $(this).css("background", "#767676");
+      }, function(){
+      $(this).css("background", "#3f3f3f");
+      });
+    $('.form .message a').css('color', '#393939');
   });
 
   maaz_theme.addEventListener('click', function() {
@@ -139,6 +157,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme: Selected!';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
+    $('.press-button').css('background-color', 'rgb(6, 170, 0)');
+    $('.press-button').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(1,130,40)");
@@ -152,9 +172,19 @@ $(window).on('load', () => {
     stats_txt.className = 'maaz';
     themes_txt.className = 'maaz';
     share_txt.className = 'maaz';
-    share_infotxt.className = 'info-text-maaz'
-    rules_infotxt.className = 'info-text-maaz'
-    thanks_infotxt.className = 'info-text-maaz'
+    share_infotxt.className = 'info-text-maaz';
+    rules_infotxt.className = 'info-text-maaz';
+    thanks_infotxt.className = 'info-text-maaz';
+    $('.form button').css('background', '#6abf1d');
+    $('.form').css('background', 'rgb(224,255,203)');
+    $('.form').css('background', 'linear-gradient(45deg, rgba(224,255,203,1) 0%, rgba(172,255,172,1) 100%)');
+    $(".form button").hover(function(){
+      $(this).css("background", "#b8e68e");
+      }, function(){
+      $(this).css("background", "#6abf1d");
+      });
+    $('.form .message a').css('color', '#539e10');
+    $('.form .message').css('color', 'grey');
 
   });
 
@@ -165,6 +195,8 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme: Selected!';
     $('#main-title').css('color', 'white');
+    $('.press-button').css('background-color', 'rgb(120, 0, 122)');
+    $('.press-button').css('color', 'white');
     $("li").hover(function(){
       $(this).css('transition', 'background 0.1s')
       $(this).css("background", "linear-gradient(47deg, rgba(238,0,255,1) 0%, rgba(126,0,255,1) 100%)");
@@ -178,9 +210,19 @@ $(window).on('load', () => {
     stats_txt.className = 'cameron';
     themes_txt.className = 'cameron';
     share_txt.className = 'cameron';
-    share_infotxt.className = 'info-text-cameron'
-    rules_infotxt.className = 'info-text-cameron'
-    thanks_infotxt.className = 'info-text-cameron'
+    share_infotxt.className = 'info-text-cameron';
+    rules_infotxt.className = 'info-text-cameron';
+    thanks_infotxt.className = 'info-text-cameron';
+    $('.form button').css('background', '#bb26df');
+    $('.form').css('background', 'linear-gradient(243deg, rgba(250,173,255,1) 0%, rgba(211,168,255,1) 100%)')
+    
+    $(".form button").hover(function(){
+      $(this).css("background", "#cb7cde");
+      }, function(){
+      $(this).css("background", "#bb26df");
+      });
+    $('.form .message a').css('color', '#bb26df');
+    $('.form .message').css('color', 'white');
   });
 
 
