@@ -88,6 +88,7 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
+    $('.subtitle').css('color', 'white');
     $('.press-button').css('background-color', 'rgb(100, 100, 100)');
     $('.press-button').css('color', 'white');
     $("li").hover(function(){
@@ -106,6 +107,7 @@ $(window).on('load', () => {
     share_infotxt.className = 'info-text-base';
     rules_infotxt.className = 'info-text-base';
     thanks_infotxt.className = 'info-text-base';
+    $('.form').css('background', 'white');
     $('.form button').css('background', '#3f3f3f');
     $(".form button").hover(function(){
       $(this).css("background", "#767676");
@@ -123,6 +125,7 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'grey');
+    $('.subtitle').css('color', 'grey');
     $('.press-button').css('background-color', 'rgb(230, 230, 230)');
     $('.press-button').css('color', 'rgb(39,39,39)');
     $("li").hover(function(){
@@ -141,6 +144,7 @@ $(window).on('load', () => {
     share_infotxt.className = 'info-text-light';
     rules_infotxt.className = 'info-text-light';
     thanks_infotxt.className = 'info-text-light';
+    $('.form').css('background', 'white');
     $('.form button').css('background', '#3f3f3f');
     $(".form button").hover(function(){
       $(this).css("background", "#767676");
@@ -157,6 +161,7 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme: Selected!';
     cameron_theme.innerHTML = 'Cameron Theme';
     $('#main-title').css('color', 'white');
+    $('.subtitle').css('color', 'white');
     $('.press-button').css('background-color', 'rgb(6, 170, 0)');
     $('.press-button').css('color', 'white');
     $("li").hover(function(){
@@ -195,6 +200,7 @@ $(window).on('load', () => {
     maaz_theme.innerHTML = 'Maaz Theme';
     cameron_theme.innerHTML = 'Cameron Theme: Selected!';
     $('#main-title').css('color', 'white');
+    $('.subtitle').css('color', 'white');
     $('.press-button').css('background-color', 'rgb(120, 0, 122)');
     $('.press-button').css('color', 'white');
     $("li").hover(function(){
