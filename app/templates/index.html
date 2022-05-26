@@ -13,6 +13,7 @@
     <!-- Bootstrap elements -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
 
     <!-- CSS for Current page -->
     <!-- <link rel = 'stylesheet' href = "{{ url_for('static',filename='styles/base.css' ) }}"> -->
@@ -32,29 +33,18 @@
 
 </head>
 <body id = 'background' class = 'base-theme'>
-    <nav class="navbar navbar-inverse">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" id = 'hamburger'>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span> Share</a></li>
-              <li onclick = 'onRules()'><a id = 'rulebutton'><span class="glyphicon glyphicon-question-sign"></span> Rules</a></li>
-              <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span> Thanks!</a></li>
-              <li onclick = 'onThemes()'><a href="#"><span class="glyphicon glyphicon-pencil"></span> Themes</a></li>
-            </ul>
-            <ul class = 'nav navbar-nav pull-right'>
-              <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-              <li><a onclick = 'onStats()'><span class="glyphicon glyphicon-dashboard"></span> Stats</a></li>
-              <li><a onclick = 'onLeaderboard()'><span class="glyphicon glyphicon-stats"></span> Leaderboard</a></li>
-            </ul>
-          </div>
-        
-      </nav>
+
+    <ul>
+      <li onclick = 'onShare()'><a href="#"><span class="glyphicon glyphicon-share"></span></a></li>
+      <li onclick = 'onRules()'><a id = 'rulebutton'><span class="glyphicon glyphicon-question-sign"></span></a></li>
+      <li onclick = 'onThanks()'><a href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
+      <li onclick = 'onThemes()'><a href="#"><span class="glyphicon glyphicon-pencil"></span></a></li>
+      <li><a href="login.html"><span class="glyphicon glyphicon-user"></span></a></li>
+      <li><a onclick = 'onStats()'><span class="glyphicon glyphicon-dashboard"></span></a></li>
+      <li><a onclick = 'onLeaderboard()'><span class="glyphicon glyphicon-stats"></span></a></li>
+    </ul>
+
+      
     
     <!-- Information Div - Where the rules of the game will be explained. -->
     <div id = 'overlay' class = 'overlay-panel'>

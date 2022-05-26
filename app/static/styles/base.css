@@ -107,7 +107,29 @@ html, body {
   /* Just to get some separation between the keyboard and the guess counter */
 }
 
-ul li {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(39,39,39);
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  display: inline-block;
+  padding: 0px 0px;
+}
+
+li a {
+  display: block;
+  color: rgb(150, 150, 150);
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+a:hover {
   color: white;
 }
 
@@ -495,5 +517,26 @@ p {
   border-radius: 10px;
   opacity: 0.75;
 }
+
+.navbar-collapse.collapse {
+  display: block!important;
+  }
+  
+.navbar-nav>li, .navbar-nav {
+display: inline-block !important;
+}
+  
+
+
+@media (min-width: 567px) {
+  .abs-center-x {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+}
+
+
 
 
