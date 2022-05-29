@@ -34,6 +34,9 @@
 </head>
 <body id = 'background' class = 'base-theme'>
 
+
+<!-- The last icon in this list is the login button, with a spac next to it that says login. It should either have Login, if the user is not logged in,
+or their email if they are logged in -->
     <ul>
       <li><a onclick = 'onShare()'><span class="glyphicon glyphicon-share"></span></a></li>
       <li><a id = 'rulebutton' onclick = 'onRules()'><span class="glyphicon glyphicon-question-sign"></span></a></li>
@@ -41,7 +44,7 @@
       <li><a onclick = 'onThemes()'><span class="glyphicon glyphicon-pencil"></span></a></li>
       <li><a onclick = 'onStats()'><span class="glyphicon glyphicon-dashboard"></span></a></li>
       <li><a onclick = 'onLeaderboard()'><span class="glyphicon glyphicon-stats"></span></a></li>
-      <li><a href="login.html"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+      <li><a href="login.html"><span class="glyphicon glyphicon-user"></span><span id = 'user-or-login'>Login</span>></a></li>
     </ul>
     
     <!-- Information Div - Where the rules of the game will be explained. -->
