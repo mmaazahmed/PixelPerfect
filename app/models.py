@@ -41,7 +41,7 @@ class Player_history(db.model):
 
 
     def __init__(self, ):
-        super(PlayerHisto_hy,db.model)
+        super(PlayerHistory,db.model)
     __tablename__= 'player_history'
         
 
