@@ -51,7 +51,7 @@ $(window).on('load', () => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
-  const joined = [ month, day,year].join('-');
+  const joined = [month, day, year].join('-');
 
   // Code blocks to stop the div from disappearing when clicking in the text field, but to disappear when clicking outside the field.
   share_div.addEventListener("click", function() {
@@ -124,13 +124,13 @@ $(window).on('load', () => {
     $('.subtitle').css('color', 'white');
     $('.press-button').css('background-color', 'rgb(100, 100, 100)');
     $('.press-button').css('color', 'white');
-    $("li").hover(function(){
+    $("li").hover(function() {
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(39,39,39)");
       $(this).css("border-radius", "10px");
-      }, function(){
+    }, function() {
       $(this).css("background", "rgb(39,39,39)");
-      });
+    });
     thanks_txt.className = 'base';
     overlay_txt.className = 'base';
     leaderboard_txt.className = 'base';
@@ -142,7 +142,7 @@ $(window).on('load', () => {
     rules_infotxt.className = 'info-text-base';
     thanks_infotxt.className = 'info-text-base';
 
-    
+
   });
 
   light_theme.addEventListener('click', function() {
@@ -156,12 +156,12 @@ $(window).on('load', () => {
     $('.subtitle').css('color', 'grey');
     $('.press-button').css('background-color', 'rgb(230, 230, 230)');
     $('.press-button').css('color', 'rgb(39,39,39)');
-    $("li").hover(function(){
-    $(this).css('transition', 'background 0.1s');
-    $(this).css("background", "rgb(200,200,200)");
-    $(this).css("border-radius", "10px");
-    }, function(){
-    $(this).css("background", "rgb(39,39,39)");
+    $("li").hover(function() {
+      $(this).css('transition', 'background 0.1s');
+      $(this).css("background", "rgb(200,200,200)");
+      $(this).css("border-radius", "10px");
+    }, function() {
+      $(this).css("background", "rgb(39,39,39)");
     });
     thanks_txt.className = 'light';
     overlay_txt.className = 'light';
@@ -186,13 +186,13 @@ $(window).on('load', () => {
     $('.subtitle').css('color', 'white');
     $('.press-button').css('background-color', 'rgb(6, 170, 0)');
     $('.press-button').css('color', 'white');
-    $("li").hover(function(){
+    $("li").hover(function() {
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "rgb(1,130,40)");
       $(this).css("border-radius", "10px");
-      }, function(){
+    }, function() {
       $(this).css("background", "rgb(39,39,39)");
-      });
+    });
     thanks_txt.className = 'maaz';
     overlay_txt.className = 'maaz';
     leaderboard_txt.className = 'maaz';
@@ -217,13 +217,13 @@ $(window).on('load', () => {
     $('.subtitle').css('color', 'white');
     $('.press-button').css('background-color', 'rgb(120, 0, 122)');
     $('.press-button').css('color', 'white');
-    $("li").hover(function(){
+    $("li").hover(function() {
       $(this).css('transition', 'background 0.1s');
       $(this).css("background", "linear-gradient(47deg, rgba(238,0,255,1) 0%, rgba(126,0,255,1) 100%)");
       $(this).css("border-radius", "10px");
-      }, function(){
+    }, function() {
       $(this).css("background", "rgb(39,39,39)");
-      });
+    });
     thanks_txt.className = 'cameron';
     overlay_txt.className = 'cameron';
     leaderboard_txt.className = 'cameron';
@@ -242,8 +242,9 @@ $(window).on('load', () => {
 
   var guess_copyandpaste = 'Play Pixel Perfect: A Game by Sean, Maaz, Pablo and Cameron: \n'
 
-  
+
   let image = document.getElementsByClassName('test')[0]
+  let guessHistory = ""
 
   $.ajax('/api/correctanswer', {
     type: 'get',
@@ -264,7 +265,7 @@ $(window).on('load', () => {
       return NaN
     }
 
-    
+
     let count = document.getElementById('guess-content').children.length + 1;
     if (count >= 6) {
       console.log('nice try!')
@@ -273,6 +274,7 @@ $(window).on('load', () => {
     }
 
     guesstxt = $(guess).val();
+    guessHistory += guesstxt + ':'
 
     for (char in guesstxt) {
       let letter = guesstxt[char];
@@ -285,7 +287,7 @@ $(window).on('load', () => {
       }
     }
     let correctness;
-    let payload = { guess: guesstxt, correctanswer: correct_answer }
+    let payload = { guess: guessHistory, correctanswer: correct_answer }
     $.ajax('/api/guessattempt', {
       type: 'POST',
       async: false,
@@ -307,8 +309,8 @@ $(window).on('load', () => {
     }
     else if (guess_correct == false && count < 5) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n';
-      
-      image.src = 'static/images/'+joined+ '/' + (count+1) + '.png';
+
+      image.src = 'static/images/' + joined + '/' + (count + 1) + '.png';
     }
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n';
@@ -317,12 +319,13 @@ $(window).on('load', () => {
     };
 
     if (guess_correct) {
-    $("<div style = 'transition: display 0.1s; 'class = 'correct-guess'><p id = 'correct_guess' class = 'guess' style = 'color: green;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
-    $(guess).val('')
-  } else {
-    $("<div style = 'transition: display 0.1s; 'class = 'guess" + String(count) + "' ><p id = 'incorrect_guess' class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
-    $(guess).val('')
-  }};
+      $("<div style = 'transition: display 0.1s; 'class = 'correct-guess'><p id = 'correct_guess' class = 'guess' style = 'color: green;'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
+      $(guess).val('')
+    } else {
+      $("<div style = 'transition: display 0.1s; 'class = 'guess" + String(count) + "' ><p id = 'incorrect_guess' class = 'guess'>" + 'GUESS ' + String(count) + ': ' + guesstxt + "</p></div>").hide().appendTo('#guess-content').fadeIn(100)
+      $(guess).val('')
+    }
+  };
 
 
   guess.addEventListener("keypress", function(e) {
@@ -367,6 +370,14 @@ function onThanks() {
 function onOutcome(bool, count, correct_answer) {
   document.getElementById("outcome").className = 'fade-in';
   document.getElementById("outcome").style.display = "block";
+  let payload = { answer_history: guessHistory, count: count }
+  $.ajax('/api/storestats', {
+    type: 'POST',
+    async: false,
+    data: JSON.stringify(payload),
+    contentType: 'application/json',
+    dataType: 'json'
+  })
   if (bool == true) {
     document.getElementById('outcome-title').innerHTML = 'You Win!';
     document.getElementById('guess-count').innerHTML = count
@@ -383,6 +394,28 @@ function onThemes() {
 }
 
 function onStats() {
+  let currStreak = document.getElementById('current_streak');
+  let bestStreak = document.getElementById('best_streak');
+  let breakdown = document.getElementById('guess_breakdown');
+  let apiStreak;
+  let payload = {};
+  $.ajax('/api/getUserStats', {
+    type: 'GET',
+    async: false,
+    data: JSON.stringify(payload),
+    contentType: 'application/json',
+    dataType: 'json',
+    success: function(data) {
+      apiStreak = data
+    }
+  });
+  currStreak.innerHTML = apiStreak['currStreak'];
+  bestStreak.innerHTML = apiStreak['highestStreak'];
+  let append
+  for (let i = 1; i < 6; i++) {
+    append = i + " Guesses" + ":" + apiStreak[i] + " ";
+    breakdown.innerHTML += append;
+  }
   document.getElementById("stats").className = 'fade-in';
   document.getElementById("stats").style.display = "block";
 }
