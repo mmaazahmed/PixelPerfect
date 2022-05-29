@@ -119,6 +119,12 @@ li a:active {
 
 li a:visited {
   color: rgb(150, 150, 150);
+  text-decoration: none;
+}
+
+li a:visited:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .col-sm-4 {
