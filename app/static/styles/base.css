@@ -4,26 +4,6 @@ html, body {
   height: 100%; 
   width: 100%;}
 
-#nav {
-  position: static;
-  z-index: 9999;
-}
-
-#myNavbar{
-  background-color: rgb(39, 39, 39);
-  border-radius: 10px;
-  position: static;
-  z-index: 300;
-}
-
-#dropdown-list {
-  background-color: rgb(39, 39, 39);
-  padding: 10px;
-  border-radius: 10px;
-  position: static;
-  z-index: 200;
-}
-
 .list-item {
   background-color: rgb(39, 39, 39);
   z-index: 500;
@@ -54,7 +34,6 @@ html, body {
   font-family: "Smooch", sans-serif;
   size: 20px;
 }
-
 
 .menulink {
   color: white;
@@ -129,8 +108,17 @@ li a {
   text-decoration: none;
 }
 
-a:hover {
+li a:hover {
   color: white;
+  cursor:pointer;
+}
+
+li a:active {
+  color: rgb(150, 150, 150);
+}
+
+li a:visited {
+  color: rgb(150, 150, 150);
 }
 
 .col-sm-4 {
@@ -281,11 +269,6 @@ a:hover {
     text-align: left;
 }
 
-.navbar.navbar-inverse{
-  height: 40px;
-
-}
-
 #guesstxt
 { 
   background-image: url(./text.gif);
@@ -303,12 +286,9 @@ a:hover {
 /*-webkit-background-clip: content-box;
    -moz-background-clip: content-box;
     background-clip: content-box;*/
+}
 
 
-}
-.guesstext:hover {
-  box-shadow: inset 0 0 0 2px red;
-}
 
 
 #keyboard {
@@ -423,7 +403,6 @@ a:hover {
 }
 
 #guesses {
-  
 display: block;
 text-align: center;
 margin: 20px
@@ -516,25 +495,6 @@ p {
 #guess-content {
   border-radius: 10px;
   opacity: 0.75;
-}
-
-.navbar-collapse.collapse {
-  display: block!important;
-  }
-  
-.navbar-nav>li, .navbar-nav {
-display: inline-block !important;
-}
-  
-
-
-@media (min-width: 567px) {
-  .abs-center-x {
-      position: absolute;
-      top: 5px;
-      left: 50%;
-      transform: translateX(-50%);
-  }
 }
 
 
