@@ -1,4 +1,4 @@
-#from flask import app
+from flask import app
 from pathlib import Path
 from PIL import Image
 from config import Config
@@ -6,10 +6,10 @@ from datetime import datetime,timedelta
 import shutil
 import os
 from flask_sqlalchemy import SQLAlchemy
-
+# from app import models
+from .models import User
 UPLOAD_FOLDER=Config.UPLOAD_FOLDER
 
-#db = SQLAlchemy(app)
 
 c=[0,0,0] # will store average r,g,b values for each pf_block i.e pf*pf
 
@@ -27,7 +27,7 @@ c=[0,0,0] # will store average r,g,b values for each pf_block i.e pf*pf
 
 
 
-# img = player__history.query.select(filter_by(id=))
+# img = User.query.select(filter_by(id=1))
 # for images in img:
 #     print(f'{images.id}')
 

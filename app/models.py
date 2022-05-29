@@ -15,13 +15,13 @@ class User(UserMixin,db.Model):
     email=db.Column(db.String(128), unique=True, nullable=False)
     password_hash=db.Column(db.String(128))
 
-    # def __init__(self, user_id,username, password, email):
-    #     self.username = username
-    #     self.password = generate_password_hash(password)
+    def __init__(self, user_id,username, password, email):
+        self.username = username
+        self.password = generate_password_hash(password)
 
-    #     self.name = username
+        self.name = username
 
-    #     self.email = email
+        self.email = email
     
     def __repr__(self):
         return f'<User {self.username}>'
