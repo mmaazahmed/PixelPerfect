@@ -38,7 +38,9 @@ class Images(db.Model):
     name = db.Column(db.String, unique=True, nullable=False)
     answer = db.Column(db.String, nullable=False)
     date = db.Column(db.String, nullable=False)
+    pf=db.Column(db.String(), nullable=False,server_default="1/1/1/1/1")
     user_hist = db.relationship("Player_history")
+    
 
 class Player_history(db.Model):
     

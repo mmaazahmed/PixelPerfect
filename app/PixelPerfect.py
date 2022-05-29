@@ -1,3 +1,5 @@
+# from winreg import QueryReflectionKey
+from email.mime import image
 from flask import app
 from pathlib import Path
 from PIL import Image
@@ -7,7 +9,7 @@ import shutil
 import os
 from flask_sqlalchemy import SQLAlchemy
 # from app import models
-from .models import User
+from .models import User,Player_history,Images
 UPLOAD_FOLDER=Config.UPLOAD_FOLDER
 
 
@@ -46,7 +48,7 @@ def remove_directory():  # will remove puzzle 2 from today
         print ("del of the directory succeeded %s " % path)
         return True
 
-def create_directory():
+def create_new_directory():
     today=datetime.strftime(datetime.now(), '%m-%d-%Y')
     path=os.getcwd()+'/app/static/images/'+ str(today)
 
@@ -63,13 +65,14 @@ def create_new_puzzle():
 
     today=datetime.strftime(datetime.now() - timedelta(1), '%m-%d-%Y')
     remove_directory()
-    create_directory()
-    #image=[(img path,today)]pull image frmo db using (today)
-    #img = ImageTable.query.filter_by(date=today)
+    create_new_directory()
+    # image=[(img path,today)]pull image frmo db using (today)
+    image= Images.query.filter_by(date=today)
     #img.img_name
     #img.
     #img.pixelfactor
-    #populate_directories(image)
+    print(image)
+    # populate_directories(image)
     
 
 def get_dates():
@@ -183,4 +186,5 @@ def pixelelate(images): #@params list of tupples [(image name(string),date(strin
 
 #create_directories()
 #remove_directory()
-#initialiseGame()
+# initialiseGame()
+create_new_puzzle()
