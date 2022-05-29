@@ -13,10 +13,13 @@ app.config.from_object(Config)
 
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY']=SECRET_KEY
+
 basedir= os.path.abspath(os.path.dirname(__file__))
-print(basedir)
 SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL', 'sqlite:///' + os.path.join(basedir,'database.db'))
-app.config['SQLALCHEMY_DATABASE_URI']= SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///pixel-perfect.fb'
+
+
+
 db = SQLAlchemy(app)
 migrate=Migrate(app,db)
 

@@ -13,25 +13,25 @@ UPLOAD_FOLDER=Config.UPLOAD_FOLDER
 
 c=[0,0,0] # will store average r,g,b values for each pf_block i.e pf*pf
 
-app.config["SQLALCHEMY_DATABASE"] = "sqlite///" +"../database.db"
+# app.config["SQLALCHEMY_DATABASE"] = "sqlite///" +"../database.db"
 
-'''
-sqlite3 database.db
-.tables
-select * from player__history
+# '''
+# sqlite3 database.db
+# .tables
+# select * from player__history
 
-for i in range(5):
-    img = player_history(date=,username=,...)
-    db.session.add(img)
-    db.session.commit()
+# for i in range(5):
+#     img = player_history(date=,username=,...)
+#     db.session.add(img)
+#     db.session.commit()
 
 
 
-img = player__history.query.select(filter_by(id=))
-for images in img:
-    print(f'{images.id}')
+# img = player__history.query.select(filter_by(id=))
+# for images in img:
+#     print(f'{images.id}')
 
-'''
+# '''
 
 def remove_directory():  # will remove puzzle 2 from today
 
