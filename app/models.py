@@ -40,7 +40,13 @@ class Images(db.Model):
     date = db.Column(db.String, nullable=False)
     pf=db.Column(db.String(), nullable=False,server_default="1/1/1/1/1")
     user_hist = db.relationship("Player_history")
-    
+    def __init__(self, id,name, answer, date,pf):
+        self.name = name
+        self.answer=answer
+        self.pf=pf
+        self.date = date
+    def __repr__(self):
+        return f'<Image {self.name}, answer {self.answer},date {self.date}>'
 
 class Player_history(db.Model):
     
