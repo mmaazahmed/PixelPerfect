@@ -242,8 +242,8 @@ $(window).on('load', () => {
 
   var guess_copyandpaste = 'Play Pixel Perfect: A Game by Sean, Maaz, Pablo and Cameron: \n'
 
-
   let image = document.getElementsByClassName('test')[0]
+  image.src = "static/images/" + joined + "/" + 1 + ".png"
   let guessHistory = ""
 
   $.ajax('/api/correctanswer', {
@@ -287,7 +287,7 @@ $(window).on('load', () => {
       }
     }
     let correctness;
-    let payload = { guess: guessHistory, correctanswer: correct_answer }
+    let payload = { guess: guesstxt, correctanswer: correct_answer }
     $.ajax('/api/guessattempt', {
       type: 'POST',
       async: false,
