@@ -9,24 +9,27 @@ import shutil
 import os
 from flask_sqlalchemy import SQLAlchemy
 # from app import models
-from .models import User,Player_history,Images
+from app.models import User,Player_history,Images
 UPLOAD_FOLDER=Config.UPLOAD_FOLDER
 
 
 c=[0,0,0] # will store average r,g,b values for each pf_block i.e pf*pf
 UPDATE_DELTA=Config.UPDATE_DELTA
+# UPDATE_DELTA=
 
 def check_time():
-    f= open("./app/log/last_update.txt","r")
-    last_update= int(f.read())
-    f.close()
+    print("in check time")
+    with  open("./app/log/last_update.txt","r") as f:
+        last_update= int(f.read())
+    print("last update",last_update)
     now= int(time.time())
-    print(now)
     if (now - last_update)>UPDATE_DELTA:
         last_update=now
-        f= open("./app/log/last_update.txt","w")
-        f.write(str(last_update))
-        f.close
+
+        with open("./app/log/last_update.txt","w") as f:
+            a=str(last_update)
+            f.write(a)
+
         create_new_puzzle()
     return UPDATE_DELTA-(now-last_update)
 
@@ -36,12 +39,12 @@ def remove_directory():  # will remove puzzle with the day before yesteday's dat
     path=UPLOAD_FOLDER+ remove_date
     try:
         shutil.rmtree(path)
+        print ("del of the directory succeeded %s " % path)
+        return True
     except OSError:
         print ("del of the directory %s failed" % path)
         return False
-    else:
-        print ("del of the directory succeeded %s " % path)
-        return True
+        
 
 def create_new_directory():
     today=datetime.strftime(datetime.now(), '%m-%d-%Y')
@@ -49,22 +52,19 @@ def create_new_directory():
 
     try:
         os.mkdir(path)
+        print ("Successfully created the directory %s " % path)
+        return True
     except OSError:
         print ("Creation of the directory %s failed" % path)
         return False
-    else:
-        print ("Successfully created the directory %s " % path)
-        return True
-    pass
+        
 def create_new_puzzle():
 
     today=datetime.strftime(datetime.now() - timedelta(0), '%m-%d-%Y')
-    print(today)
     remove_directory()
     create_new_directory()
     image= Images.query.filter_by(date=today).first()
     populate_directories([image])
-    print(image.name)
 
 
 def get_dates():
@@ -118,12 +118,9 @@ def pixelate(k,i,j,pix):
 
 def get_images(dates):
     images=[]
-    print(dates)
     for date in dates:
-        print(date)
         image= Images.query.filter_by(date=date).first()
         
-        print(image)
         images.append(image)
 
     return images
@@ -135,30 +132,28 @@ def populate_directories(images):
     if len(images)==1: 
         pixelelate(images)
     else:
-        print('im here')
         pixelelate(images)
 
 def initialiseGame():
     now=int(time.time())
-    f= open("./app/log/last_update.txt","w")
-    f.write(str(now))
-    f.close
+
+
+    with open("./app/log/last_update.txt","w") as f:
+        f.write(str(now)) 
+
     dates=get_dates()
     create_directories() # create 3 directories with yesterday,today's, and tomorrow's dates in that order
-    print("immhere",dates)
     images=get_images(dates) #return a list of image obje in the format (path to image,date associated with image,pixelFactor)
     populate_directories(images) # populate directories with pixelated images
    
 
 
 def pixelelate(images): #@params list of tupples [(image name(string),date(string),pixel factor(lst of ints))]
-    print('in pixel')
     for image in images:
         image_name=image.name
         image_date=image.date
         pixel_factor=image.pf.split('/')
         pixel_factor=[int(pf) for pf in pixel_factor ]
-        print(pixel_factor)
         img_path= UPLOAD_FOLDER+'images/'+image_name
 
         im = Image.open(img_path)
@@ -175,9 +170,7 @@ def pixelelate(images): #@params list of tupples [(image name(string),date(strin
                     for j in range(block_col):
                         pixelate(pf,i,j,pix)
             count-=1
-            print(image_date)
             destination=UPLOAD_FOLDER+image_date+'/'+str(count)+image_name[-4:]
-            print(destination)
             im.save(destination)
 
 
