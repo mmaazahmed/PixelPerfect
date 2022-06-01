@@ -252,13 +252,13 @@ $(window).on('load', () => {
     contentType: 'application/json',
     success: function(data) {
       correct_answer = data.answer;
+      correct_answer = correct_answer.toLowerCase()
       console.log(correct_answer);
     }
   })
 
   function submit() {
     var childs = document.getElementById('guess-content').lastChild;
-    console.log(childs.className);
 
     if (childs.className === 'correct-guess') {
       console.log('hahah you got it already chill')
@@ -273,7 +273,16 @@ $(window).on('load', () => {
       return NaN
     }
 
+    // Get input from user, clean it to a uniform format, and test for any common inputting errors.
     guesstxt = $(guess).val();
+    guesstxt = guesstxt.toLowerCase();
+    lettertest = guesstxt.trim();
+
+    if (lettertest.length === 0) {
+      console.log('bad guess')
+        $('#error-div').css('visibility', 'visible')
+        return (NaN)
+    }
     guessHistory += guesstxt + ':'
 
     for (char in guesstxt) {
