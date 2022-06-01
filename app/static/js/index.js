@@ -269,7 +269,7 @@ $(window).on('load', () => {
     let count = document.getElementById('guess-content').children.length + 1;
     if (count >= 6) {
       console.log('nice try!')
-      onOutcome(false, count, correct_answer)
+      onOutcome(false, count, correct_answer, guessHistory)
       return NaN
     }
 
@@ -305,7 +305,7 @@ $(window).on('load', () => {
     if (guess_correct) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': CORRECT! 😁' + '\n'
       guess_copyandpaste = guess_copyandpaste + String(window.location.href)
-      onOutcome(true, count, correct_answer)
+      onOutcome(true, count, correct_answer, guessHistory)
     }
     else if (guess_correct == false && count < 5) {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n';
@@ -315,7 +315,7 @@ $(window).on('load', () => {
     else {
       guess_copyandpaste = guess_copyandpaste + 'GUESS ' + String(count) + ': INCORRECT 😭' + '\n';
       guess_copyandpaste = guess_copyandpaste + String(window.location.href);
-      onOutcome(false, count, correct_answer);
+      onOutcome(false, count, correct_answer, guessHistory);
     };
 
     if (guess_correct) {
@@ -367,7 +367,7 @@ function onThanks() {
   document.getElementById("thanks").style.display = "block";
 }
 
-function onOutcome(bool, count, correct_answer) {
+function onOutcome(bool, count, correct_answer, guessHistory) {
   document.getElementById("outcome").className = 'fade-in';
   document.getElementById("outcome").style.display = "block";
   let payload = { answer_history: guessHistory, count: count }
