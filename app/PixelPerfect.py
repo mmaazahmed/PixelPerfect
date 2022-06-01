@@ -1,6 +1,5 @@
-# from winreg import QueryReflectionKey
-from email.mime import image
-from unicodedata import name
+from fileinput import close
+import time
 from flask import app
 from pathlib import Path
 from PIL import Image
@@ -15,6 +14,21 @@ UPLOAD_FOLDER=Config.UPLOAD_FOLDER
 
 
 c=[0,0,0] # will store average r,g,b values for each pf_block i.e pf*pf
+UPDATE_DELTA=Config.UPDATE_DELTA
+
+def check_time():
+    f= open("./app/log/last_update.txt","r")
+    last_update= int(f.read())
+    f.close()
+    now= int(time.time())
+    print(now)
+    if (now - last_update)>UPDATE_DELTA:
+        last_update=now
+        f= open("./app/log/last_update.txt","w")
+        f.write(str(last_update))
+        f.close
+        create_new_puzzle()
+    return UPDATE_DELTA-(now-last_update)
 
 def remove_directory():  # will remove puzzle with the day before yesteday's date
 
@@ -125,6 +139,10 @@ def populate_directories(images):
         pixelelate(images)
 
 def initialiseGame():
+    now=int(time.time())
+    f= open("./app/log/last_update.txt","w")
+    f.write(str(now))
+    f.close
     dates=get_dates()
     create_directories() # create 3 directories with yesterday,today's, and tomorrow's dates in that order
     print("immhere",dates)
