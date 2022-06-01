@@ -2,45 +2,53 @@ from app import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-# #bcrypt generate_password_hash(), check_generate_password_hash()
-# @login_manager.user_loader
+# @login.user_loader
 # def load_user(user_id):
 #     return User.query.get(user_id)
 
-class User(UserMixin,db.Model):
-    # __tablename__='users'
+class User(db.Model,UserMixin):
+    __tablename__='users'
 
     id = db.Column(db.Integer,primary_key=True)
     username=db.Column( db.String(64),unique=True,nullable=False)
     email=db.Column(db.String(128), unique=True, nullable=False)
     password_hash=db.Column(db.String(128))
+    # img_id = db.Column(db.Integer, db.ForeignKey('images.id'))
+    db.relationship('Player_history',backref='user')
 
-    def __init__(self, user_id,username, password, email):
+    def __init__(self,username, password, email):
+        # self.id=user_id
         self.username = username
-        self.password = generate_password_hash(password)
-
-        self.name = username
-
         self.email = email
+        self.password_hash = generate_password_hash(password)
+
+
+    def set_password(self,password):
+        self.password_hash=generate_password_hash(password)
+    
+    
     
     def __repr__(self):
-        return f'<User {self.username}>'
+        # return f'<User {self.username}>'
+        return f'<Image {self.username}, answer {self.email}>'
     
-    def autheticate_password(self, pwd):
-        return check_password_hash(self.password,pwd)
+    def autheticate_password(self, password):
+        return check_password_hash(self.password_hash,password)
     
    
 
 class Images(db.Model):
-    # __tablename__= 'Images'
+    __tablename__= 'images'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
     answer = db.Column(db.String, nullable=False)
     date = db.Column(db.String, nullable=False)
     pf=db.Column(db.String(), nullable=False,server_default="1/1/1/1/1")
-    user_hist = db.relationship("Player_history")
-    def __init__(self, id,name, answer, date,pf):
+    # user_hist = db.relationship("Player_history")
+    db.relationship('Player_history',backref='image')
+
+    def __init__(self,name, answer, date,pf):
         self.name = name
         self.answer=answer
         self.pf=pf
@@ -50,14 +58,17 @@ class Images(db.Model):
 
 class Player_history(db.Model):
     
-    # __tablename__= 'player_history'
+    __tablename__= 'player_history'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, nullable=False) #use Username to return results for that username
+    # username = db.Column(db.String, nullable=False) #use Username to return results for that username
     answer_history = db.Column(db.String, nullable=False) #Have Large Sequence
     answer_count = db.Column(db.Integer, nullable=False)
     date_submitted = db.Column(db.String, nullable=False)
     win = db.Column(db.Boolean, default=False, nullable=False)
-    img_id = db.Column(db.Integer, db.ForeignKey('images.id'))
+    user=db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
+    image=db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
+    
+    # img_id = db.Column(db.Integer, db.ForeignKey('images.id'))
     
 
 

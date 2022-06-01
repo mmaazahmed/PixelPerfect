@@ -72,7 +72,7 @@ def create_new_puzzle():
     #img.
     #img.pixelfactor
     print(image)
-    # populate_directories(image)
+    populate_directories(image)
     
 
 def get_dates():
@@ -138,7 +138,7 @@ def get_images(dates):
 
 def populate_directories(images):
     if len(images)==1: 
-        pass
+        pixelelate(image)
     else:
         print('im here')
         pixelelate(images)
@@ -147,9 +147,9 @@ def initialiseGame():
     dates=get_dates
     create_directories() # create 3 directories with yesterday,today's, and tomorrow's dates in that order
     #images=get_images(dates)# return a list of tuples in the format (path to image,date associated with image,pixelFactor)
-    images=[ ('bmo.png','05-24-2022',[2,4,6,8,10]),
-            ('finn.png','05-25-2022',[2,4,6,8,10]),
-            ('has.jpg','05-26-2022',[2,4,6,8,10])
+    images=[ ('bmo.png','05-29-2022',[2,4,6,8,10]),
+            ('finn.png','05-30-2022',[2,4,6,8,10]),
+            ('has.jpg','05-31-2022',[2,4,6,8,10])
 
     ]
     populate_directories(images) # populate directories with pixelated images
@@ -187,4 +187,4 @@ def pixelelate(images): #@params list of tupples [(image name(string),date(strin
 #create_directories()
 #remove_directory()
 # initialiseGame()
-create_new_puzzle()
+# create_new_puzzle()
