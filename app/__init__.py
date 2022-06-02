@@ -3,6 +3,7 @@ from flask import Flask
 from flask import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_bootstrap import Bootstrap
 
 
 app= Flask(__name__)
@@ -16,9 +17,9 @@ SQLALCHEMY_DATABASE_URI='sqlite:///' + os.path.join(basedir,'app.db')
 app.config['SQLALCHEMY_DATABASE_URI']= SQLALCHEMY_DATABASE_URI
 
 
+bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 migrate=Migrate(app,db)
-
 
 from app import routes,api,models
 from .models import User,Player_history,UserMixin,Images

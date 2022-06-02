@@ -68,7 +68,6 @@ class Player_history(db.Model):
     user=db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
     image=db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
     
-    # img_id = db.Column(db.Integer, db.ForeignKey('images.id'))
     
 
 

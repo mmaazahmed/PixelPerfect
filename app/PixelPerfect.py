@@ -1,4 +1,4 @@
-from fileinput import close
+
 import time
 from flask import app
 from pathlib import Path
@@ -172,9 +172,3 @@ def pixelelate(images): #@params list of tupples [(image name(string),date(strin
             count-=1
             destination=UPLOAD_FOLDER+image_date+'/'+str(count)+image_name[-4:]
             im.save(destination)
-
-
-#create_directories()
-#remove_directory()
-# initialiseGame()
-# create_new_puzzle()

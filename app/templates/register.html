@@ -1,0 +1,11 @@
+{% extends 'signIn.html' %}
+
+{% block content %}
+  
+{{ form.hidden_tag() }}
+
+{{ wtf.form_field(form.username) }}
+{{ wtf.form_field(form.password) }}
+{{ wtf.form_field(form.remember) }}
+
+{% endblock %}  
