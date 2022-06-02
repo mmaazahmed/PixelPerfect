@@ -17,7 +17,7 @@ Cameron: Front-end HTML, CSS, JS
 ## How to run:
 1. Install Python, if you haven't already. This can be done through the official website (https://www.python.org) or through the Microsoft Store.
 2. Open command prompt, and navigate to the project folder.
-3. Type the command '-r requirements.txt' to install packages/modules.
+3. Type the command 'pip install -r requirements.txt' to install packages/modules.
 4. Activate virtual environment by typing 'python3 -m venv venv', followed by 'source venv/bin/activate'.
 5. Finally, type 'flask run' into terminal, and the program should start to run. Click or type the link into your favourite browser.
 
