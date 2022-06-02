@@ -48,20 +48,21 @@ def login():
                 return redirect(url_for('login'))
             
             if request.form['type'] == "signup":
+                print("im here")
                 if isExist(form2.username.data,'username'):
                     flash("ussername already taken")
                     return redirect(url_for('login'))
                 if isExist(form2.email.data,'email'):
                     flash("email already in use")
                     return redirect(url_for('login'))
-                isExist(form2.email.data,'email')
                 user = User(form2.username.data, form2.password.data, form2.email.data)
+                print(user)
                 db.session.add(user)
                 db.session.commit()
                 #Some arbritray response
                 print('CREATED NEW USER')
                 flash ("You've just created a new account. Have fun~")
-                return redirect(url_for('login'))
+                return render_template('login.html',form2 = form2, form1=form1)
 
             return 'A form has been requested from something other than repsective login/signup forms'
         flash('Error has occured...')
@@ -72,8 +73,10 @@ def login():
 def isExist(item,data): #item can be either username or email
     if data =='username':
         user = User.query.filter_by(username=item).first() 
-        return True
+        if user:
+            return True
     elif data== 'email':
         user = User.query.filter_by(email=item).first() 
-        return True
+        if user:
+            return True
     return False
