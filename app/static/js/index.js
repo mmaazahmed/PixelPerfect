@@ -280,8 +280,8 @@ $(window).on('load', () => {
 
     if (lettertest.length === 0) {
       console.log('bad guess')
-        $('#error-div').css('visibility', 'visible')
-        return (NaN)
+      $('#error-div').css('visibility', 'visible')
+      return (NaN)
     }
     guessHistory += guesstxt + ':'
 
@@ -377,16 +377,33 @@ function onThanks() {
 }
 
 function onOutcome(bool, count, correct_answer, guessHistory) {
+  let win
+  if (bool == true) {
+    win = 'win'
+  }
   document.getElementById("outcome").className = 'fade-in';
   document.getElementById("outcome").style.display = "block";
-  let payload = { answer_history: guessHistory, count: count }
+  let currStreak1 = document.getElementById('current_streak');
+  let bestStreak1 = document.getElementById('best_streak');
+  let breakdown1 = document.getElementById('guess_breakdown');
+  let anonstatus;
+  let payload = { answer_history: guessHistory, count: count, win: win }
   $.ajax('/api/storestats', {
     type: 'POST',
     async: false,
     data: JSON.stringify(payload),
     contentType: 'application/json',
-    dataType: 'json'
+    dataType: 'json',
+    success: function(data) {
+      anonstatus = data
+    }
   })
+  if (anonstatus['anon'] == "anon") {
+    currStreak1.innerHTML = "Not logged in! Please login to save your stats"
+    bestStreak1.innerHTML = "Not logged in! Please login to save your stats"
+    breakdown1.innerHTML = ""
+  }
+
   if (bool == true) {
     document.getElementById('outcome-title').innerHTML = 'You Win!';
     document.getElementById('guess-count').innerHTML = count
@@ -403,30 +420,47 @@ function onThemes() {
 }
 
 function onStats() {
-  let currStreak = document.getElementById('current_streak');
-  let bestStreak = document.getElementById('best_streak');
-  let breakdown = document.getElementById('guess_breakdown');
+  let currStreak1 = document.getElementById('current_streak');
+  let bestStreak1 = document.getElementById('best_streak');
+  let breakdown1 = document.getElementById('guess_breakdown');
+  let breakdown2 = document.getElementById('guess-breakdown')
+  let currStreak2 = document.getElementById('current-streak');
+  let bestStreak2 = document.getElementById('best-streak');
+
   let apiStreak;
-  let payload = {};
   $.ajax('/api/getUserStats', {
     type: 'GET',
     async: false,
-    data: JSON.stringify(payload),
     contentType: 'application/json',
-    dataType: 'json',
     success: function(data) {
       apiStreak = data
     }
   });
-  currStreak.innerHTML = apiStreak['currStreak'];
-  bestStreak.innerHTML = apiStreak['highestStreak'];
-  let append
-  for (let i = 1; i < 6; i++) {
-    append = i + " Guesses" + ":" + apiStreak[i] + " ";
-    breakdown.innerHTML += append;
+  if (apiStreak['currStreak'] == "anonymous") {
+    currStreak1.innerHTML = "Not logged in! Please login to save your stats"
+    bestStreak1.innerHTML = "Not logged in! Please login to save your stats"
+    breakdown1.innerHTML = ""
+    currStreak2.innerHTML = "Not logged in! Please login to save your stats"
+    bestStreak2.innerHTML = "Not logged in! Please login to save your stats"
+    breakdown2.innerHTML = "Not logged in! Please login to save your stats"
+
+    document.getElementById("stats").className = 'fade-in';
+    document.getElementById("stats").style.display = "block";
   }
-  document.getElementById("stats").className = 'fade-in';
-  document.getElementById("stats").style.display = "block";
+
+  else {
+    currStreak1.innerHTML = apiStreak['currStreak'];
+    bestStreak1.innerHTML = apiStreak['highestStreak'];
+
+    let append
+    for (let i = 1; i < 6; i++) {
+      append = i + " Guesses" + ":" + apiStreak[i] + " ";
+      breakdown.innerHTML += append;
+    }
+    document.getElementById("stats").className = 'fade-in';
+    document.getElementById("stats").style.display = "block";
+
+  }
 }
 
 function onLeaderboard() {

@@ -60,13 +60,21 @@ class Player_history(db.Model):
     
     __tablename__= 'player_history'
     id = db.Column(db.Integer, primary_key=True)
-    # username = db.Column(db.String, nullable=False) #use Username to return results for that username
+    #username = db.Column(db.String, nullable=False) #use Username to return results for that username
     answer_history = db.Column(db.String, nullable=False) #Have Large Sequence
     answer_count = db.Column(db.Integer, nullable=False)
     date_submitted = db.Column(db.String, nullable=False)
     win = db.Column(db.Boolean, default=False, nullable=False)
     user=db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
     image=db.Column(db.Integer, db.ForeignKey("images.id"), nullable=False)
+
+    def __init__(self,user,ans,answer_count,image,date,win):
+        self.user = user
+        self.ans = ans
+        self.answer_count = answer_count
+        self.image = image
+        self.date = date
+        self.win = win
     
     
 
