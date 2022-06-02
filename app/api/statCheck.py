@@ -1,9 +1,7 @@
-from app import app, db
-from flask import jsonify, url_for, request
-from app.api.errors import bad_request, error_response
+from app import app 
+from flask import jsonify
 from app.models import Player_history
-from datetime import date
-from flask_login import AnonymousUserMixin, current_user
+from flask_login import current_user
 
 @app.route('/api/getUserStats',methods=['GET'])
 def getStats():
@@ -11,7 +9,7 @@ def getStats():
     if not current_user.is_authenticated:
         response['currStreak'] = "anonymous"
         return jsonify(response)
-    username =  current_user.username
+    username =  current_user.user
     records = Player_history.query.filter_by(username=username).all()
     revRec = records.reverse()
     currStreak = 0
