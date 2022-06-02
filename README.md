@@ -20,7 +20,9 @@ activate virtual environment and run the command flask run to run the app.
 
 ## App structure:
 images/daily puzzles are stored in ./app/static/images/images directory  
+  
 names of each image is stored in the database along with its deploy date, pixelfactors,and answer to the puzzle  
+  
 Pixelated versions of the daily image will be name 1.png,2.png ... 5.png with 1 being the most pixelated and 5 being the least.  
 On start up the __init__.py will create 3 folders with yesterday's,today's and tomorrows date through the PixelPerfectinitilization() function  
 It will then pull the image names from the database corresponding to these dates. Dates are formated in the following order month-day-year with leading zeros.  
