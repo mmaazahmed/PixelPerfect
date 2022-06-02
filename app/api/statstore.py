@@ -4,7 +4,8 @@ from app.api.errors import bad_request, error_response
 from app.models import Player_history, Images
 from datetime import date
 from flask_login import AnonymousUserMixin, current_user
-app.route('/api/storestats',methods=['POST'])
+
+@app.route('/api/storestats',methods=['POST'])
 def store():
     today = date.today()
     date = today.strftime("%m/%d/%Y")

@@ -5,8 +5,12 @@ from app.models import Player_history
 from datetime import date
 from flask_login import AnonymousUserMixin, current_user
 
-app.route('/api/getUserStats',methods=['POST'])
+@app.route('/api/getUserStats',methods=['GET'])
 def getStats():
+    response = {}
+    if not current_user.is_authenticated:
+        response['currStreak'] = "anonymous"
+        return jsonify(response)
     username =  current_user.username
     records = Player_history.query.filter_by(username=username).all()
     revRec = records.reverse()
@@ -28,7 +32,6 @@ def getStats():
             streaks.append(highestStreak)
             highestStreak = 0
     finalHighest = max(streaks)
-    response = {}
     response['currStreak'] = currStreak
     response['highestStreak'] = finalHighest
     for i in range(5):
